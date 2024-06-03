@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -32,7 +34,6 @@ public class Resume {
     private String startDate;
     private String endDate;
 
-
     // 기술 및 자격증
     private String certificationName;
 
@@ -43,4 +44,13 @@ public class Resume {
     // 기타
     private String hobbies;
 
+    // 작성 날짜
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime creationDate;
+
+    // 작성 날짜 설정 메서드
+    @PrePersist
+    protected void onCreate() {
+        creationDate = LocalDateTime.now();
+    }
 }

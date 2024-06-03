@@ -1,5 +1,7 @@
 package com.example.jobKoreaIt.controller.user.seeker;
 
+import com.example.jobKoreaIt.domain.seeker.dto.ResumeDto;
+
 import com.example.jobKoreaIt.domain.seeker.entity.Resume;
 import com.example.jobKoreaIt.domain.seeker.service.JobSeekerServiceImpl;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +23,10 @@ public class SeekerController {
 
     @Autowired
     private JobSeekerServiceImpl jobSeekerServiceImpl;
+
+    public SeekerController(JobSeekerServiceImpl jobSeekerServiceImpl) {
+        this.jobSeekerServiceImpl = jobSeekerServiceImpl;
+    }
 
     @GetMapping("/join")
     public String join_get(){
@@ -49,17 +55,25 @@ public class SeekerController {
     }
 
     @GetMapping("/resume/read/{id}")
-    public String resume_read_get(@PathVariable("id")Long id,Model model){
+    public String resume_read_get(@PathVariable("id") Long id, Model model) {
         log.info("GET /resume/read..");
-        Optional<Resume> resume=jobSeekerServiceImpl.resume_read(id);
-        model.addAttribute("resume",resume);
+        Optional<Resume> resumeOptional = jobSeekerServiceImpl.resume_read(id);
+        if (resumeOptional.isPresent()) {
+            Resume resume = resumeOptional.get();
+            model.addAttribute("resume", resume);
+        } else {
+            // 해당 ID에 해당하는 이력서를 찾을 수 없는 경우에 대한 처리
+            // 여기서는 간단히 "notFound"라는 문자열을 모델에 추가하여 나중에 뷰에서 처리할 수 있도록 합니다.
+            model.addAttribute("notFound", "이력서를 찾을 수 없습니다.");
+        }
         return "seeker/resume/read"; // return the view name
     }
 
+
     @GetMapping("/resume/list")
-    public String resume_list_get(Model model){
+    public String resume_list_get(Resume resume,Model model){
         log.info("GET /resume/list..");
-        List<Resume> resumesList=jobSeekerServiceImpl.resume_list();
+        List<ResumeDto> resumesList= jobSeekerServiceImpl.resume_list();
         model.addAttribute("resumeList",resumesList);
         return "seeker/resume/list"; // return the view name
     }

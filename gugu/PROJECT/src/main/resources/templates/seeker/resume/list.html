@@ -23,10 +23,7 @@
         tr:nth-child(even) {
             background-color: #f2f2f2;
         }
-        /* 버튼 숨기기 */
-        .hidden {
-            display: none;
-        }
+
     </style>
 </head>
 <body>
@@ -39,100 +36,39 @@
     </header>
     <main>
         <section>
-            <h1>RESUME LIST</h1>
+            <h1>내 이력서 항목</h1>
             <form id="resumeForm" action="/resume/delete" method="post">
                 <table>
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
+                        <th>이름</th>
                         <th>Email</th>
-                        <th>Phone</th>
-                        <th>School</th>
-                        <th>Major</th>
-                        <th>Graduation Year</th>
-                        <th>Company</th>
-                        <th>Position</th>
-                        <th>Start Date</th>
-                        <th>End Date</th>
-                        <th>Certification</th>
-                        <th>Summary</th>
-                        <th>Hobbies</th>
-                        <th>Action</th>
+                        <th>전화번호</th>
+                        <th>작성일자</th> <!-- 수정된 부분 -->
+                        <th>변경사항</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="resume : ${resumeList}">
-                        <td>
-                            <input type="checkbox" th:value="${resume.id}" name="resumeIds">
-                            <span th:text="${resume.id}"></span>
-                        </td>
+                        <td th:text="${resume.id}"></td>
                         <td th:text="${resume.name}"></td>
                         <td th:text="${resume.email}"></td>
                         <td th:text="${resume.phone}"></td>
-                        <td th:text="${resume.schoolName}"></td>
-                        <td th:text="${resume.major}"></td>
-                        <td th:text="${resume.graduationYear}"></td>
-                        <td th:text="${resume.companyName}"></td>
-                        <td th:text="${resume.position}"></td>
-                        <td th:text="${resume.startDate}"></td>
-                        <td th:text="${resume.endDate}"></td>
-                        <td th:text="${resume.certificationName}"></td>
-                        <td th:text="${resume.summary}"></td>
-                        <td th:text="${resume.hobbies}"></td>
+                        <td th:text="${resume.creationDate}"></td> <!-- 수정된 부분 -->
                         <td>
-                            <button class="hidden" type="submit" name="action" value="edit">Edit</button>
-                            <button class="hidden" type="submit" name="action" value="delete">Delete</button>
+                            <a th:href="@{'/seeker/resume/read/' + ${resume.id}}">상세보기</a>
+                            <a th:href="@{'/seeker/resume/update/' + ${resume.id}}">수정</a>
+                            <a th:href="@{'/seeker/resume/delete/' + ${resume.id}}">삭제</a>
                         </td>
                     </tr>
                     </tbody>
                 </table>
             </form>
-            <button id="editBtn">수정하기</button>
-            <button id="deleteBtn">삭제하기</button>
         </section>
     </main>
     <!-- footer -->
     <th:block th:insert="~{fragments/footer :: footerFragment}" />
 </div>
-<script>
-    // 체크된 항목이 있는지 확인하는 함수
-    function hasCheckedItems() {
-        var checkboxes = document.querySelectorAll('input[name="resumeIds"]:checked');
-        return checkboxes.length > 0;
-    }
-
-    // 체크된 항목이 있을 때 버튼을 보이게 하는 함수
-    function toggleButtonsVisibility() {
-        var editBtn = document.getElementById('editBtn');
-        var deleteBtn = document.getElementById('deleteBtn');
-        if (hasCheckedItems()) {
-            editBtn.classList.remove('hidden');
-            deleteBtn.classList.remove('hidden');
-        } else {
-            editBtn.classList.add('hidden');
-            deleteBtn.classList.add('hidden');
-        }
-    }
-
-    // 체크박스 변경 이벤트 핸들러
-    document.addEventListener('change', function(event) {
-        if (event.target.matches('input[name="resumeIds"]')) {
-            toggleButtonsVisibility();
-        }
-    });
-
-    // Edit 버튼 클릭 이벤트 핸들러
-    document.getElementById('editBtn').addEventListener('click', function(event) {
-        document.getElementById('resumeForm').action = "/resume/edit";
-        document.getElementById('resumeForm').submit();
-    });
-
-    // Delete 버튼 클릭 이벤트 핸들러
-    document.getElementById('deleteBtn').addEventListener('click', function(event) {
-        document.getElementById('resumeForm').action = "/resume/delete";
-        document.getElementById('resumeForm').submit();
-    });
-</script>
 </body>
 </html>
