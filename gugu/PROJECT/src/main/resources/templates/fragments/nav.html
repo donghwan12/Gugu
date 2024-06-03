@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<th:block th:fragment="navFragment">
+    <nav class=layout-150>
+        <div class="left">
+            <div class="sitemenu">
+                <a href="/">
+                    <span class="material-symbols-outlined">badge</span>
+                </a>
+            </div>
+            <div class="logo">
+                <img src="/assets/logo_2.png" alt="logo" />
+            </div>
+            <div class="search">
+                <form action="">
+                    <input type="text" class="form-control w-100" placeholder="검색할 KEYWORD를 입력하세요." />
+                </form>
+            </div>
+
+        </div>
+        <div class="right">
+            <ul class=menu>
+
+                <li>
+                    <a href="">채용정보</a>
+                </li>
+                <li>
+                    <a href="">신입|인턴</a>
+                </li>
+                <li>
+                    <a href="">기업|연봉</a>
+                </li>
+                <li>
+                    <a href="">커뮤니티</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</th:block>
+
+</body>
+</html>

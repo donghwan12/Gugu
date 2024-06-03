@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--  link   -->
+    <th:block th:insert="~{fragments/link :: linkFragment}" />
+
+
+    <!-- index.css   -->
+    <link rel="stylesheet" href="/css/index.css">
+
+    <!--  index.js  -->
+    <script src="/js/index.js" defer></script>
+
+
+
+
+</head>
+<body>
+
+
+<div class="wrapper">
+    <header>
+        <!-- header   -->
+        <th:block th:insert="~{fragments/top_header :: topHeaderFragment}" />
+        <!-- nav       -->
+        <th:block th:insert="~{fragments/nav :: navFragment}" />
+
+    </header>
+    <main class="">
+        <section class="main-block layout-150">
+
+            <div class="left">
+                LEFT
+            </div>
+
+            <div class="banner-section" >
+                <div class="notification">
+                    NOTIFICATION
+                </div>
+                <!-- Slider main container -->
+                <div class="swiper centers">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+
+                        <!-- Slides -->
+                        <div class="swiper-slide">  <a href="javascript:void(0)"><img src="" alt=""> </a>   </div>
+                        <div class="swiper-slide">  <a href="javascript:void(0)"><img src="" alt=""> </a>   </div>
+                        <div class="swiper-slide">  <a href="javascript:void(0)"><img src="" alt=""> </a>   </div>
+                        <div class="swiper-slide">  <a href="javascript:void(0)"><img src="" alt=""> </a>   </div>
+                        <div class="swiper-slide">  <a href="javascript:void(0)"><img src="" alt=""> </a>   </div>
+                        <div class="swiper-slide">  <a href="javascript:void(0)"><img src="" alt=""> </a>   </div>
+                        <div class="swiper-slide">  <a href="javascript:void(0)"><img src="" alt=""> </a>   </div>
+                        <div class="swiper-slide">  <a href="javascript:void(0)"><img src="" alt=""> </a>   </div>
+
+                    </div>
+                    <!-- If we need pagination -->
+                    <!--
+                    <div class="swiper-pagination"> </div>
+                     -->
+                    <!-- If we need navigation buttons -->
+                    <div class="swiper-button-prev">
+                        <span class="material-symbols-outlined">arrow_left</span>
+                    </div>
+                    <div class="swiper-button-next">
+                        <span class="material-symbols-outlined">arrow_right</span>
+                    </div>
+
+                    <!-- If we need scrollbar -->
+                    <div class="swiper-scrollbar"></div>
+                </div>
+
+            </div>
+            <div class="right">
+                right
+            </div>
+        </section>
+
+
+        <section class="company_items">
+            <div class="items">
+
+                <div class="item">모집공고</div>
+                <div class="item">모집공고</div>
+                <div class="item">모집공고</div>
+                <div class="item">모집공고</div>
+                <div class="item">모집공고</div>
+                <div class="item">모집공고</div>
+                <div class="item">모집공고</div>
+                <div class="item">모집공고</div>
+                <div class="item">모집공고</div>
+                <div class="item">모집공고</div>
+                <div class="item">모집공고</div>
+                <div class="item">모집공고</div>
+                <div class="item">모집공고</div>
+                <div class="item">모집공고</div>
+                <div class="item">모집공고</div>
+                <div class="item">모집공고</div>
+                <div class="item">모집공고</div>
+                <div class="item">모집공고</div>
+                <div class="item">모집공고</div>
+                <div class="item">모집공고</div>
+            </div>
+        </section>
+
+        <!-- 다중슬라이더 구현 -->
+        <section class="multi-slider">
+            <!-- Slider main container -->
+            <div class="swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide">
+                        <a href="javascript:void(0)">
+                            <img src="" alt="">
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="javascript:void(0)">
+                            <img src="" alt="">
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="javascript:void(0)">
+                            <img src="" alt="">
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="javascript:void(0)">
+                            <img src="" alt="">
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="javascript:void(0)">
+                            <img src="" alt="">
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="javascript:void(0)">
+                            <img src="" alt="">
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="javascript:void(0)">
+                            <img src="" alt="">
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="javascript:void(0)">
+                            <img src="" alt="">
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="javascript:void(0)">
+                            <img src="" alt="">
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="javascript:void(0)">
+                            <img src="" alt="">
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="javascript:void(0)">
+                            <img src="" alt="">
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="javascript:void(0)">
+                            <img src="" alt="">
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="javascript:void(0)">
+                            <img src="" alt="">
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section></section>
+    </main>
+
+    <!-- footer       -->
+    <th:block th:insert="~{fragments/footer :: footerFragment}" />
+</div>
+</body>
+</html>
