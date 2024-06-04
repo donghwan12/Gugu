@@ -2,17 +2,17 @@ package com.example.jobKoreaIt.controller.user.seeker;
 
 import com.example.jobKoreaIt.domain.seeker.dto.ResumeDto;
 
-import com.example.jobKoreaIt.domain.seeker.entity.Career;
 import com.example.jobKoreaIt.domain.seeker.entity.Resume;
 import com.example.jobKoreaIt.domain.seeker.service.JobSeekerServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.batch.BatchProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,7 +23,6 @@ public class SeekerController {
 
     @Autowired
     private JobSeekerServiceImpl jobSeekerServiceImpl;
-
 
     public SeekerController(JobSeekerServiceImpl jobSeekerServiceImpl) {
         this.jobSeekerServiceImpl = jobSeekerServiceImpl;
@@ -39,22 +38,19 @@ public class SeekerController {
     public String resume_add_get(Model model){
         log.info("GET /resume/add..");
         model.addAttribute("resume", new Resume());
-        model.addAttribute("careerList",new ArrayList<Career>()); //경력 리스트를 초기화시킨다.
         return "seeker/resume/add"; // return the view name
     }
 
     @PostMapping("/resume/add")
-    public String resume_add_post(@ModelAttribute Resume resume, @ModelAttribute Career career){
+    public String resume_add_post(Resume resume){
         log.info("POST /resume/add..");
-        jobSeekerServiceImpl.resume_add(resume, career);
-        return "redirect:/seeker/resume/list"; // 이력서 추가 후 목록 페이지로 리다이렉트
+        jobSeekerServiceImpl.resume_add(resume);
+        return "redirect:/seeker/resume/list"; // redirect to the resume list after adding
     }
 
-
-
     @GetMapping("/resume/update/{id}")
-    public String resume_update_get(@PathVariable("id")long id,Model model){
-        log.info("GET /resume/update..");
+    public String resume_update_get(@PathVariable("id")Long id){
+        log.info("GET /resume/update.." +id);
         return "seeker/resume/update"; // return the view name
     }
 
@@ -73,7 +69,7 @@ public class SeekerController {
         return "seeker/resume/read"; // return the view name
     }
 
-    //List Controller
+
     @GetMapping("/resume/list")
     public String resume_list_get(Resume resume,Model model){
         log.info("GET /resume/list..");

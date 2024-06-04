@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<th:block th:fragment="footerFragment">
+    <footer class="bg-dark">
+        <style>
+            footer{
+              color : white;
+            }
+            .footer-main{
+              height : 150px;
+
+
+              display:flex;
+              justify-content: start;
+              align-items: center;
+
+            }
+            .footer-main>*{
+              margin :10px;
+            }
+            .footer-main>div{
+              position:relative;
+            }
+            .footer-main>div::after{
+              content :'';
+              height : 18px;
+              /* border : 1px solid white; */
+              display:block;
+              position:absolute;
+              left:0px;
+              top:-25px;
+              width : 100%;
+              color : lightgray;
+              font-size : .5rem;
+              text-align:center;
+            }
+            .footer-main>div.github::after{
+              content : "GITHUB";
+            }
+            .footer-main>div.instar::after{
+              content : "INSTRAGRAM";
+            }
+            .footer-main>div.facebook::after{
+              content : "FACEBOOK";
+            }
+            .footer-bottom{
+              font-size : .5rem;
+              font-family: "맑은 고딕";
+              text-align: right;
+              padding-right : 10px;
+            }
+        </style>
+        <div class="footer-top">
+            <ul>
+                <li><a href="javascript:void(0)" target="_blank">TEST</a></li>
+                <li><a href="javascript:void(0)" target="_blank">TEST</a></li>
+                <li><a href="javascript:void(0)" target="_blank">TEST</a></li>
+                <li><a href="javascript:void(0)" target="_blank">TEST</a></li>
+            </ul>
+        </div>
+        <div class="footer-main layout-150">
+
+            <div class="github"><a href=""><img src="/assets/githublogo.png" alt="" style="width:50px;height:50px;"></a></div>
+            <div class="instar"><a href=""><img src="/assets/instraicon.png" alt="" style="width:50px;height:50px;"></a></div>
+            <div class="facebook"><a href=""><img src="/assets/facebookicon.png" alt="" style="width:50px;height:50px;"></a></div>
+
+        </div>
+        <div class="footer-bottom ">
+            <span class="layout-150">
+            copyright ⓒ 2024 ---- . ALL RIGHTS RESERVED
+            </span>
+        </div>
+    </footer>
+</th:block>
+
+
+</body>
+</html>

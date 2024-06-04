@@ -1,0 +1,233 @@
+@charset "UTF-8";
+
+.main-block{
+
+    border : 1px solid;
+    padding : 15px;
+
+	position:relative;
+
+	display:flex;
+	justify-content : center;
+	align-items : start;
+}
+.main-block>*{
+
+}
+
+.main-block>.left{
+	width:100%;
+	height:400px;
+	border : 1px solid;
+
+}
+.main-block>.right{
+	width:100%;
+	height:400px;
+	border : 1px solid;
+
+}
+
+
+.banner-section{
+
+	display:flex;
+	justify-content : start;
+	align-items : start;
+	flex-direction:column;
+}
+.banner-section .notification{
+	width : 100%;
+	height : 50px;
+	border : 1px solid;
+
+}
+.banner-section>.swiper{
+			width : 1000px;
+            border : 1px solid;
+          	height:350px;
+
+}
+
+.banner-section>.swiper>.swiper-wrapper{
+
+}
+.banner-section>.swiper>.swiper-wrapper>.swiper-slide{
+            width:100%;
+            height:100%;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            padding : 10px;
+}
+.banner-section>.swiper>.swiper-wrapper>.swiper-slide>a{
+            width : 100%;
+            height : 100%;
+            display:block;
+}
+
+.banner-section>.swiper>.swiper-wrapper>.swiper-slide>a>img{
+            border : 1px solid;
+            width : 100%;
+            height : 100%;
+            object-fit: none;
+}
+.banner-section .swiper-pagination-bullet{
+            width:15px;
+            height:15px;
+            background-color: red;
+
+}
+
+.banner-section .swiper-button-next::after,
+.banner-section .swiper-button-prev::after
+{
+	content :'';
+}
+
+.banner-section .material-symbols-outlined{
+            font-size : 7rem;
+            color : lightgray;
+            opacity: .6;
+}
+.banner-section .material-symbols-outlined:hover{
+            opacity: 1;
+}
+
+.banner-section .swiper-button-next{}
+.banner-section .swiper-button-prev{}
+
+
+        /*  */
+        .wrapper>main>section.company_items{
+        	border : 1px solid;
+        	display:flex;
+        	justify-content : center;
+        	align-items : center;
+        }
+        .wrapper>main>section.company_items>.items{
+        	width : 100%;
+        	border : 1px solid;
+
+            display:flex;
+        	justify-content : center;
+        	align-items : center;
+        	flex-wrap : wrap;
+
+        }
+        .wrapper>main>section.company_items>.items>.item{
+        	width : 300px;
+        	height:200px;
+        	border : 1px solid;
+        	margin : 15px;
+        	transition:.5s;
+        	background : white;
+        }
+
+        /* Multi-Slider */
+        .wrapper>main>section.multi-slider{
+            height:300px;
+            border : 1px solid;
+            padding : 15px;
+
+        }
+        .wrapper>main>section.multi-slider>.swiper{
+            border : 1px solid;
+            height:300px;
+        }
+        .wrapper>main>section.multi-slider>.swiper>.swiper-wrapper{
+            display:flex;
+            align-items: center;
+            /*스무스하게 이동*/
+            transition-timing-function: linear;
+
+        }
+        .wrapper>main>section.multi-slider>.swiper>.swiper-wrapper>.swiper-slide{
+            width:250px ;
+            height:250px;
+            padding : 5px;
+            border : 1px solid;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+
+            position:relative;
+            transition:.3s;
+            background-color: white;
+            cursor: pointer;
+
+            position:relative;
+
+
+            position:relative;
+        }
+
+        .wrapper>main>section.multi-slider>.swiper>.swiper-wrapper>.swiper-slide.swiper-slide-active{
+            /*transform : scale(1.5);*/
+            z-index : 2;
+
+        }
+
+        .wrapper>main>section.multi-slider>.swiper>.swiper-wrapper>.swiper-slide.swiper-slide-prev,
+        .wrapper>main>section.multi-slider>.swiper>.swiper-wrapper>.swiper-slide.swiper-slide-next{
+/*
+            transform : scale(1.2);
+*/
+            z-index : 1;
+
+        }
+
+        .wrapper>main>section.multi-slider>.swiper>.swiper-wrapper>.swiper-slide>a{
+            width : 100%;
+            height : 100%;
+            min-width : 150px;
+            min-height : 150px;
+            display:block;
+
+            text-decoration: none;
+            color : black;
+        }
+
+
+        .wrapper>main>section.multi-slider>.swiper>.swiper-wrapper>.swiper-slide>a>img{
+            width : 100%;
+            height : 100%;
+            object-fit: cover;
+        }
+        .wrapper>main>section.multi-slider .swiper-pagination-bullet{
+            width:5px;
+            height:5px;
+            background-color: red;
+        }
+        .wrapper>main>section.multi-slider .swiper-button-next::after,
+        .wrapper>main>section.multi-slider .swiper-button-prev::after
+        {
+            content :'';
+        }
+
+        .wrapper>main>section.multi-slider .swiper-button-prev,
+        .wrapper>main>section.multi-slider .swiper-button-next
+        {
+            background-color: rgb(235, 233, 233);
+            height : 100%;
+            position:absolute;
+            top:22px;
+            width : 70px;
+            opacity: .4;
+        }
+
+        .wrapper>main>section.multi-slider .material-symbols-outlined{
+            font-size : 7rem;
+            color :black;
+            opacity: .4;
+        }
+        .wrapper>main>section.multi-slider .swiper-button-prev:hover,
+        .wrapper>main>section.multi-slider .swiper-button-next:hover
+        {
+            opacity: .8;
+        }
+
+        .wrapper>main>section.multi-slider .swiper-button-next::after,
+        .wrapper>main>section.multi-slider .swiper-button-prev::after{
+            content : '';
+        }

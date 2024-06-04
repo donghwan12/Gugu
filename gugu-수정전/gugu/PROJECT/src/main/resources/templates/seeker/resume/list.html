@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- link -->
+    <th:block th:insert="~{fragments/link :: linkFragment}" />
+    <style>
+        /* 테이블 스타일 */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        /* 짝수 행 색상 지정 */
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <!-- header -->
+        <th:block th:insert="~{fragments/top_header :: topHeaderFragment}" />
+        <!-- nav -->
+        <th:block th:insert="~{fragments/nav :: navFragment}" />
+    </header>
+    <main>
+        <section>
+            <h1>내 이력서 항목</h1>
+            <form id="resumeForm" action="/resume/delete" method="post">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>이름</th>
+                        <th>Email</th>
+                        <th>전화번호</th>
+                        <th>작성일자</th> <!-- 수정된 부분 -->
+                        <th>변경사항</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="resume : ${resumeList}">
+                        <td th:text="${resume.id}"></td>
+                        <td th:text="${resume.name}"></td>
+                        <td th:text="${resume.email}"></td>
+                        <td th:text="${resume.phone}"></td>
+                        <td th:text="${resume.creationDate}"></td> <!-- 수정된 부분 -->
+                        <td>
+                            <a th:href="@{'/seeker/resume/read/' + ${resume.id}}">상세보기</a>
+                            <a th:href="@{'/seeker/resume/update/' + ${resume.id}}">수정</a>
+                            <a th:href="@{'/seeker/resume/delete/' + ${resume.id}}">삭제</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+        </section>
+    </main>
+    <!-- footer -->
+    <th:block th:insert="~{fragments/footer :: footerFragment}" />
+</div>
+</body>
+</html>

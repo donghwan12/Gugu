@@ -3,21 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <title>Resume Add</title>
-
-    <!--  link   -->
+    <style>
+        /* CSS 스타일링 생략 */
+    </style>
+    <!-- link -->
     <th:block th:insert="~{fragments/link :: linkFragment}" />
+    <script>
+        function addCareer() {
+            const careerContainer = document.getElementById('careerContainer');
+            const index = careerContainer.children.length;
+            const newCareer = document.createElement('div');
+            newCareer.innerHTML = `
+                <div class="career-item">
+                    <label for="careerList[${index}].companyName">회사이름:</label>
+                    <input type="text" id="careerList[${index}].companyName" name="careerList[${index}].companyName" required />
+                </div>
+                <div class="career-item">
+                    <label for="careerList[${index}].position">직책:</label>
+                    <input type="text" id="careerList[${index}].position" name="careerList[${index}].position" required />
+                </div>
+                <div class="career-item">
+                    <label for="careerList[${index}].startDate">근무시작일:</label>
+                    <input type="text" id="careerList[${index}].startDate" name="careerList[${index}].startDate" required />
+                </div>
+                <div class="career-item">
+                    <label for="careerList[${index}].endDate">근무종료일:</label>
+                    <input type="text" id="careerList[${index}].endDate" name="careerList[${index}].endDate" required />
+                </div>
+                <hr>
+            `;
+            careerContainer.appendChild(newCareer);
+
+            // Add hidden input field to include careerList index
+            const careerIndexInput = document.createElement('input');
+            careerIndexInput.type = 'hidden';
+            careerIndexInput.name = 'careerList[' + index + '].index';
+            careerIndexInput.value = index;
+            newCareer.appendChild(careerIndexInput);
+        }
+    </script>
 </head>
 <body>
 <div class="wrapper">
     <header>
-        <!-- header   -->
+        <!-- header -->
         <th:block th:insert="~{fragments/top_header :: topHeaderFragment}" />
-        <!-- nav       -->
+        <!-- nav -->
         <th:block th:insert="~{fragments/nav :: navFragment}" />
     </header>
     <main>
         <section>
-            <h1>이력서작성</h1>
+            <h1>이력서 작성</h1>
             <form th:action="@{/seeker/resume/add}" th:object="${resume}" method="post">
                 <div>
                     <label for="name">이름:</label>
@@ -47,44 +83,35 @@
                 </div>
                 <hr>
                 <h3>경력</h3>
-                <div>
-                    <label for="companyName">회사이름:</label>
-                    <input type="text" id="companyName" th:field="*{companyName}" required />
+                <div id="careerContainer">
+                    <!-- 경력 항목이 추가될 곳 -->
                 </div>
                 <div>
-                    <label for="position">직책</label>
-                    <input type="text" id="position" th:field="*{position}" required />
+                    <button type="button" onclick="addCareer()">경력 추가</button>
                 </div>
+                <hr>
+                <h3>기술 및 자격증</h3>
                 <div>
-                    <label for="startDate">근무시작일</label>
-                    <input type="text" id="startDate" th:field="*{startDate}" required />
-                </div>
-                <div>
-                    <label for="endDate">근무 종료일:</label>
-                    <input type="text" id="endDate" th:field="*{endDate}" required />
-                </div>
-                <div>
-                    <label for="certificationName">자격증</label>
+                    <label for="certificationName">자격증:</label>
                     <input type="text" id="certificationName" th:field="*{certificationName}" required />
                 </div>
                 <hr>
                 <h3>자기소개</h3>
                 <div>
-                    <label for="summary">자기소개서</label>
+                    <label for="summary">자기소개서:</label>
                     <textarea id="summary" th:field="*{summary}" required></textarea>
                 </div>
                 <div>
-                    <label for="hobbies">취미</label>
+                    <label for="hobbies">취미:</label>
                     <input type="text" id="hobbies" th:field="*{hobbies}" required />
                 </div>
-
                 <div>
                     <button type="submit">제출</button>
                 </div>
             </form>
         </section>
     </main>
-    <!-- footer       -->
+    <!-- footer -->
     <th:block th:insert="~{fragments/footer :: footerFragment}" />
 </div>
 </body>

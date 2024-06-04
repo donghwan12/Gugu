@@ -1,16 +1,13 @@
 package com.example.jobKoreaIt.domain.seeker.service;
 
 import com.example.jobKoreaIt.domain.seeker.dto.ResumeDto;
-import com.example.jobKoreaIt.domain.seeker.entity.Career;
 import com.example.jobKoreaIt.domain.seeker.entity.Resume;
-import com.example.jobKoreaIt.domain.seeker.repository.CareerRepository;
 import com.example.jobKoreaIt.domain.seeker.repository.ResumeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -20,20 +17,12 @@ import java.util.stream.Collectors;
 public class JobSeekerServiceImpl {
 
     @Autowired
-    public void JobSeekerServiceImpl(ResumeRepository resumeRepository, CareerRepository careerRepository) {
-        this.resumeRepository = resumeRepository;
-        this.careerRepository = careerRepository;
-    }
-
-    @Autowired
     private ResumeRepository resumeRepository;
-    private CareerRepository careerRepository;
 
     @Transactional(rollbackFor = Exception.class)
-    public void resume_add(Resume resume, Career career){
+    public void resume_add(Resume resume){
         log.info("JobSeekerRepository/resume_add...!");
-        resumeRepository.save(resume); // 이력서 저장
-        careerRepository.save(career); //경력저장
+        resumeRepository.save(resume);
     }
 
     @Transactional(rollbackFor = Exception.class)

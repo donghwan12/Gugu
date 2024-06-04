@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <title>이력서 상세정보</title>
+    <!-- link -->
+    <th:block th:insert="~{fragments/link :: linkFragment}" />
+    <style>
+        /* 스타일링 */
+        .resume-details {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .resume-details h2 {
+            margin-bottom: 10px;
+        }
+        .resume-details dl {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .resume-details dt {
+            font-weight: bold;
+        }
+        .resume-details dd {
+            margin-left: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <!-- header -->
+        <th:block th:insert="~{fragments/top_header :: topHeaderFragment}" />
+        <!-- nav -->
+        <th:block th:insert="~{fragments/nav :: navFragment}" />
+    </header>
+    <main>
+        <section>
+            <h1>이력서 상세정보</h1>
+            <div class="resume-details">
+                <h2>기본 정보</h2>
+                <dl>
+                    <dt>이름</dt>
+                    <dd th:text="${resume.name}"></dd>
+                    <dt>Email</dt>
+                    <dd th:text="${resume.email}"></dd>
+                    <dt>전화번호</dt>
+                    <dd th:text="${resume.phone}"></dd>
+                </dl>
+
+                <h2>학력</h2>
+                <dl>
+                    <dt>학교명</dt>
+                    <dd th:text="${resume.schoolName}"></dd>
+                    <dt>전공</dt>
+                    <dd th:text="${resume.major}"></dd>
+                    <dt>졸업년도</dt>
+                    <dd th:text="${resume.graduationYear}"></dd>
+                </dl>
+
+                <h2>경력</h2>
+                <dl>
+                    <dt>회사명</dt>
+                    <dd th:text="${resume.companyName}"></dd>
+                    <dt>직급</dt>
+                    <dd th:text="${resume.position}"></dd>
+                    <dt>시작일</dt>
+                    <dd th:text="${resume.startDate}"></dd>
+                    <dt>종료일</dt>
+                    <dd th:text="${resume.endDate}"></dd>
+                </dl>
+
+                <h2>기술 및 자격증</h2>
+                <dl>
+                    <dt>자격증명</dt>
+                    <dd th:text="${resume.certificationName}"></dd>
+                </dl>
+
+                <h2>자기소개서</h2>
+                <p th:text="${resume.summary}"></p>
+
+                <h2>기타</h2>
+                <p th:text="${resume.hobbies}"></p>
+            </div>
+        </section>
+    </main>
+    <!-- footer -->
+    <th:block th:insert="~{fragments/footer :: footerFragment}" />
+</div>
+</body>
+</html>

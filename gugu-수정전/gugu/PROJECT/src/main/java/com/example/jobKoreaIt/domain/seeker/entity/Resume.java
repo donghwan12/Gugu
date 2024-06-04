@@ -6,8 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -25,12 +23,16 @@ public class Resume {
     private String phone;
 
     // 학력
+    private Long educationId;
     private String schoolName;
     private String major;
     private String graduationYear;
 
-    @OneToMany(mappedBy = "resume", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Career> careers = new ArrayList<>();
+    // 경력
+    private String companyName;
+    private String position;
+    private String startDate;
+    private String endDate;
 
     // 기술 및 자격증
     private String certificationName;

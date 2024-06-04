@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Resume Add</title>
+
+    <!--  link   -->
+    <th:block th:insert="~{fragments/link :: linkFragment}" />
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <!-- header   -->
+        <th:block th:insert="~{fragments/top_header :: topHeaderFragment}" />
+        <!-- nav       -->
+        <th:block th:insert="~{fragments/nav :: navFragment}" />
+    </header>
+    <main>
+        <section>
+            <h1>이력서작성</h1>
+            <form th:action="@{/seeker/resume/add}" th:object="${resume}" method="post">
+                <div>
+                    <label for="name">이름:</label>
+                    <input type="text" id="name" th:field="*{name}" required />
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" th:field="*{email}" required />
+                </div>
+                <div>
+                    <label for="phone">휴대폰번호:</label>
+                    <input type="text" id="phone" th:field="*{phone}" required />
+                </div>
+                <h3>학력</h3>
+                <hr>
+                <div>
+                    <label for="schoolName">출신학교:</label>
+                    <input type="text" id="schoolName" th:field="*{schoolName}" required />
+                </div>
+                <div>
+                    <label for="major">전공:</label>
+                    <input type="text" id="major" th:field="*{major}" required />
+                </div>
+                <div>
+                    <label for="graduationYear">졸업년도:</label>
+                    <input type="text" id="graduationYear" th:field="*{graduationYear}" required />
+                </div>
+                <hr>
+                <h3>경력</h3>
+                <div>
+                    <label for="companyName">회사이름:</label>
+                    <input type="text" id="companyName" th:field="*{companyName}" required />
+                </div>
+                <div>
+                    <label for="position">직책</label>
+                    <input type="text" id="position" th:field="*{position}" required />
+                </div>
+                <div>
+                    <label for="startDate">근무시작일</label>
+                    <input type="text" id="startDate" th:field="*{startDate}" required />
+                </div>
+                <div>
+                    <label for="endDate">근무 종료일:</label>
+                    <input type="text" id="endDate" th:field="*{endDate}" required />
+                </div>
+                <div>
+                    <label for="certificationName">자격증</label>
+                    <input type="text" id="certificationName" th:field="*{certificationName}" required />
+                </div>
+                <hr>
+                <h3>자기소개</h3>
+                <div>
+                    <label for="summary">자기소개서</label>
+                    <textarea id="summary" th:field="*{summary}" required></textarea>
+                </div>
+                <div>
+                    <label for="hobbies">취미</label>
+                    <input type="text" id="hobbies" th:field="*{hobbies}" required />
+                </div>
+
+                <div>
+                    <button type="submit">제출</button>
+                </div>
+            </form>
+        </section>
+    </main>
+    <!-- footer       -->
+    <th:block th:insert="~{fragments/footer :: footerFragment}" />
+</div>
+</body>
+</html>

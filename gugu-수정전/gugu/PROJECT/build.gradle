@@ -68,13 +68,6 @@ dependencies {
 
 	//TEST
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
-	//spring->정상인자로 받음
-
-	tasks.withType(JavaCompile) {
-		options.compilerArgs << '-parameters'
-	}
-
 }
 
 tasks.named('test') {
