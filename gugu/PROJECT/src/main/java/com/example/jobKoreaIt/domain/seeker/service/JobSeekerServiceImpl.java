@@ -33,7 +33,7 @@ public class JobSeekerServiceImpl {
     public void resume_add(Resume resume, Career career){
         log.info("JobSeekerRepository/resume_add...!");
         resumeRepository.save(resume); // 이력서 저장
-        careerRepository.save(career); //경력저장
+        careerRepository.save(career);
     }
 
     @Transactional(rollbackFor = Exception.class)

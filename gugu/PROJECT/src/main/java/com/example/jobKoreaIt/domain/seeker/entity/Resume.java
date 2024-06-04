@@ -15,6 +15,7 @@ import java.util.List;
 @Data
 public class Resume {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,7 +31,7 @@ public class Resume {
     private String graduationYear;
 
     @OneToMany(mappedBy = "resume", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Career> careers = new ArrayList<>();
+    public List<Career> careers = new ArrayList<>();
 
     // 기술 및 자격증
     private String certificationName;

@@ -14,12 +14,12 @@ public class Career {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String companyName;
-    private String position;
-    private String startDate;
-    private String endDate;
+    public String companyName;
+    public String position;
+    public String startDate;
+    public String endDate;
 
     @ManyToOne
     @JoinColumn(name = "resume_id")
-    private Resume resume;
+    public Resume resume;
 }

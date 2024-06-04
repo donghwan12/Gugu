@@ -4,6 +4,7 @@ import com.example.jobKoreaIt.domain.seeker.dto.ResumeDto;
 
 import com.example.jobKoreaIt.domain.seeker.entity.Career;
 import com.example.jobKoreaIt.domain.seeker.entity.Resume;
+import com.example.jobKoreaIt.domain.seeker.repository.CareerRepository;
 import com.example.jobKoreaIt.domain.seeker.service.JobSeekerServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,10 +62,14 @@ public class SeekerController {
     @GetMapping("/resume/read/{id}")
     public String resume_read_get(@PathVariable("id") Long id, Model model) {
         log.info("GET /resume/read..");
+
         Optional<Resume> resumeOptional = jobSeekerServiceImpl.resume_read(id);
+        Optional<Resume> Career1 = jobSeekerServiceImpl.resume_read(id);
         if (resumeOptional.isPresent()) {
             Resume resume = resumeOptional.get();
+            Resume Career= resumeOptional.get();
             model.addAttribute("resume", resume);
+            model.addAttribute("career",Career);
         } else {
             // 해당 ID에 해당하는 이력서를 찾을 수 없는 경우에 대한 처리
             // 여기서는 간단히 "notFound"라는 문자열을 모델에 추가하여 나중에 뷰에서 처리할 수 있도록 합니다.
