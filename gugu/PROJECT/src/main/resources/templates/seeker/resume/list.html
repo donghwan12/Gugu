@@ -23,6 +23,10 @@
         tr:nth-child(even) {
             background-color: #f2f2f2;
         }
+        .deleteForm{
+            border: 1px solid;
+            color: black;
+        }
 
     </style>
 </head>
@@ -59,7 +63,10 @@
                         <td>
                             <a th:href="@{'/seeker/resume/read/' + ${resume.id}}">상세보기</a>
                             <a th:href="@{'/seeker/resume/update/' + ${resume.id}}">수정</a>
-                            <a th:href="@{'/seeker/resume/delete/' + ${resume.id}}">삭제</a>
+                            <form id="deleteForm" th:action="@{/seeker/resume/delete/{id}(id=${resume.id})}" method="post">
+                                <input type="hidden" name="_method" value="delete">
+                                <button type="submit">삭제</button>
+                            </form>
                         </td>
                     </tr>
                     </tbody>
