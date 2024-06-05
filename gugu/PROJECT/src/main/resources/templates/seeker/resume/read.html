@@ -61,19 +61,17 @@
                     <dt>졸업년도</dt>
                     <dd th:text="${resume.graduationYear}"></dd>
                 </dl>
-
                 <h2>경력</h2>
-                <dl>
-                    <dt>회사명</dt>
-                    <dd th:text="${resume.companyName}"></dd>
-                    <dt>직급</dt>
-                    <dd th:text="${resume.position}"></dd>
-                    <dt>시작일</dt>
-                    <dd th:text="${resume.startDate}"></dd>
-                    <dt>종료일</dt>
-                    <dd th:text="${resume.endDate}"></dd>
-                </dl>
-
+                    <dl th:each="career : ${resume.careers}">
+                        <dt>회사명</dt>
+                        <dd th:text="${career.companyName}"></dd>
+                        <dt>직급</dt>
+                        <dd th:text="${career.position}"></dd>
+                        <dt>시작일</dt>
+                        <dd th:text="${career.startDate}"></dd>
+                        <dt>종료일</dt>
+                        <dd th:text="${career.endDate}"></dd>
+                    </dl>
                 <h2>기술 및 자격증</h2>
                 <dl>
                     <dt>자격증명</dt>
@@ -86,6 +84,10 @@
                 <h2>기타</h2>
                 <p th:text="${resume.hobbies}"></p>
             </div>
+            <form id="updateForm" th:action="@{/seeker/resume/update/{id}(id=${resume.id})}" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit">수정하기</button>
+            </form>
         </section>
     </main>
     <!-- footer -->

@@ -45,6 +45,7 @@ public class JobSeekerServiceImpl {
         resume.setCareers(careers);
         resumeRepository.save(resume);
 
+
     }
 
     @Transactional(rollbackFor = Exception.class)
@@ -83,19 +84,37 @@ public class JobSeekerServiceImpl {
         if (optionalResume.isPresent()) {
             Resume resume = optionalResume.get();
             resumeRepository.delete(resume);
-            log.info("Resume deleted successfully");
+            careerRepository.deleteAllByResume(resume);
+            log.info("이력서 삭제성공");
         } else {
-            log.info("Resume with id {} not found", id);
+            log.info("이력서 삭제 실패!", id);
         }
     }
 
 
     @Transactional(rollbackFor = Exception.class)
-    public void resume_update(){
-        resumeRepository.findAll();
+    public void resume_update(long id, Resume updatedResume) {
+        // 이력서 업데이트 처리
+        Optional<Resume> optionalResume = resumeRepository.findById(id);
+        if (optionalResume.isPresent()) {
+            Resume resume = optionalResume.get();
+            // 수정된 내용 업데이트
+            resume.setName(updatedResume.getName());
+            resume.setEmail(updatedResume.getEmail());
+            resume.setPhone(updatedResume.getPhone());
+            resume.setSchoolName(updatedResume.getSchoolName());
+            resume.setMajor(updatedResume.getMajor());
+            resume.setGraduationYear(updatedResume.getGraduationYear());
+            // 나머지 필드도 동일하게 업데이트
 
-        log.info("TEST...");
+            // 수정된 이력서 저장
+            resumeRepository.save(resume);
+            log.info("Resume with id {} updated successfully", id);
+        } else {
+            log.info("Resume with id {} not found", id);
+        }
     }
+
 
 
 }

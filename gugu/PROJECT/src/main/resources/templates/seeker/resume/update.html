@@ -1,31 +1,140 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-
-    <!--  link   -->
-    <th:block th:insert="~{fragments/link :: linkFragment}" />
-
+    <title>이력서 수정</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .wrapper {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        header {
+            text-align: center;
+            padding: 10px 0;
+            margin-bottom: 20px;
+        }
+        main {
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input[type="text"], input[type="email"], textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button[type="submit"] {
+            background: #5cb85c;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button[type="submit"]:hover {
+            background: #4cae4c;
+        }
+        hr {
+            border: 0;
+            border-top: 1px solid #eee;
+            margin: 20px 0;
+        }
+        .career-item {
+            margin-bottom: 15px;
+        }
+        .career-item label, .career-item input {
+            width: 100%;
+        }
+    </style>
+    <script>
+        function showSuccessMessage() {
+            alert("수정이 완료되었습니다!");
+        }
+    </script>
 </head>
 <body>
-
 <div class="wrapper">
     <header>
-        <!-- header   -->
-        <th:block th:insert="~{fragments/top_header :: topHeaderFragment}" />
-        <!-- nav       -->
-        <th:block th:insert="~{fragments/nav :: navFragment}" />
-
+        <h1>이력서 수정</h1>
     </header>
     <main>
         <section>
-            <h1>RESUME UPDATE</h1>
+            <form th:action="@{/seeker/resume/update/{id}(id=${resume.id})}" th:object="${resume}" method="post" id="updateForm">
+                <!-- 기본 정보 폼 -->
+                <div>
+                    <label for="name">이름:</label>
+                    <input type="text" id="name" th:field="*{name}" required />
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" th:field="*{email}" required />
+                </div>
+                <div>
+                    <label for="phone">휴대폰번호:</label>
+                    <input type="text" id="phone" th:field="*{phone}" required />
+                </div>
+                <!-- 학력 폼 -->
+                <div>
+                    <label for="schoolName">출신학교:</label>
+                    <input type="text" id="schoolName" th:field="*{schoolName}" required />
+                </div>
+                <div>
+                    <label for="major">전공:</label>
+                    <input type="text" id="major" th:field="*{major}" required />
+                </div>
+                <div>
+                    <label for="graduationYear">졸업년도:</label>
+                    <input type="text" id="graduationYear" th:field="*{graduationYear}" required />
+                </div>
+                <!-- 경력 폼 -->
+                <div th:each="career, careerStat : *{careers}" class="career-item">
+                    <label for="companyName" th:text="${'회사이름 ' + (careerStat.index + 1) + ':'}"></label>
+                    <input type="text" id="companyName" th:field="*{careers[__${careerStat.index}__].companyName}" required />
+                    <!-- 나머지 경력 관련 필드들도 추가 -->
+                </div>
+                <!-- 기술 및 자격증 폼 -->
+                <div>
+                    <label for="certificationName">자격증:</label>
+                    <input type="text" id="certificationName" th:field="*{certificationName}" required />
+                </div>
+                <!-- 자기소개서 폼 -->
+                <div>
+                    <label for="summary">자기소개서:</label>
+                    <textarea id="summary" th:field="*{summary}" required></textarea>
+                </div>
+                <!-- 기타 항목 폼 -->
+                <!-- 추가적인 항목들을 원하실 경우 해당 폼을 추가하시면 됩니다. -->
+                <div>
+                    <button type="submit" onclick="showSuccessMessage()">수정완료</button>
+                </div>
+                <div>
+                    <a href="/seeker/resume/list">이력서 목록으로 돌아가기</a>
+                </div>
+            </form>
+
         </section>
     </main>
-
-    <!-- footer       -->
-    <th:block th:insert="~{fragments/footer :: footerFragment}" />
+    <footer>
+        <!-- Footer content here -->
+    </footer>
 </div>
 </body>
 </html>

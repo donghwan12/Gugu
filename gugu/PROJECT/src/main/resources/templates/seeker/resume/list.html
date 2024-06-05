@@ -62,7 +62,7 @@
                         <td th:text="${resume.creationDate}"></td> <!-- 수정된 부분 -->
                         <td>
                             <a th:href="@{'/seeker/resume/read/' + ${resume.id}}">상세보기</a>
-                            <a th:href="@{'/seeker/resume/update/' + ${resume.id}}">수정</a>
+
                             <form id="deleteForm" th:action="@{/seeker/resume/delete/{id}(id=${resume.id})}" method="post">
                                 <input type="hidden" name="_method" value="delete">
                                 <button type="submit">삭제</button>
