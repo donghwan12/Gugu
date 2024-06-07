@@ -108,6 +108,10 @@
                 <div th:each="career, careerStat : *{careers}" class="career-item">
                     <label for="companyName" th:text="${'회사이름 ' + (careerStat.index + 1) + ':'}"></label>
                     <input type="text" id="companyName" th:field="*{careers[__${careerStat.index}__].companyName}" required />
+                    <input type="text" id="position" th:field="*{careers[__${careerStat.index}__].position}" required />
+                    <input type="text" id="startDate" th:field="*{careers[__${careerStat.index}__].startDate}" required />
+                    <input type="text" id="endDate" th:field="*{careers[__${careerStat.index}__].endDate}" required />
+
                     <!-- 나머지 경력 관련 필드들도 추가 -->
                 </div>
                 <!-- 기술 및 자격증 폼 -->
@@ -118,7 +122,7 @@
                 <!-- 자기소개서 폼 -->
                 <div>
                     <label for="summary">자기소개서:</label>
-                    <textarea id="summary" th:field="*{summary}" required></textarea>
+                    <textarea id="summary" th:field="*{summary}" required style="height:300px;"></textarea>
                 </div>
                 <!-- 기타 항목 폼 -->
                 <!-- 추가적인 항목들을 원하실 경우 해당 폼을 추가하시면 됩니다. -->

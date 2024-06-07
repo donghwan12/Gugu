@@ -52,4 +52,20 @@ public class Resume {
     protected void onCreate() {
         creationDate = LocalDateTime.now();
     }
+    @Override
+    public String toString() {
+        return "Resume{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", schoolName='" + schoolName + '\'' +
+                ", major='" + major + '\'' +
+                ", graduationYear='" + graduationYear + '\'' +
+                ", certificationName='" + certificationName + '\'' +
+                ", summary='" + summary + '\'' +
+                ", hobbies='" + hobbies + '\'' +
+                // Avoid printing careers to prevent StackOverflowError
+                '}';
+    }
 }

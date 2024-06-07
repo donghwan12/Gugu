@@ -28,6 +28,15 @@
         .resume-details dd {
             margin-left: 0;
         }
+        .update{
+          background: #5cb85c;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -84,10 +93,13 @@
                 <h2>기타</h2>
                 <p th:text="${resume.hobbies}"></p>
             </div>
-            <form id="updateForm" th:action="@{/seeker/resume/update/{id}(id=${resume.id})}" method="post">
-                <input type="hidden" name="_method" value="delete">
-                <button type="submit">수정하기</button>
-            </form>
+<<<<<<< HEAD
+            <a class="update" th:href="@{/seeker/resume/update/{id}(id=${resume.id})}">수정하기</a>
+=======
+
+             <a th:href="@{/seeker/resume/update/{id}(id=${resume.id})}">수정하기</a>
+>>>>>>> 6b4870cdb126c34750165de66a937f3fe6e6144d
+
         </section>
     </main>
     <!-- footer -->

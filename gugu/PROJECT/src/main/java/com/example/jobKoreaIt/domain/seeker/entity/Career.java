@@ -19,7 +19,18 @@ public class Career {
     public String startDate;
     public String endDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL )
     @JoinColumn(name = "resume_id")
     public Resume resume;
+
+    @Override
+    public String toString() {
+        return "Career{" +
+                "id=" + id +
+                ", companyName='" + companyName + '\'' +
+                ", position='" + position + '\'' +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
+                '}';
+    }
 }
