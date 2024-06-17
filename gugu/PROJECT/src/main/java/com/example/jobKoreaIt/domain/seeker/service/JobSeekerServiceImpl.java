@@ -13,8 +13,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.swing.text.html.Option;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 
 @Service
@@ -38,25 +40,39 @@ public class JobSeekerServiceImpl {
     public void resume_add(ResumeFormDto resumeForm) {
         log.info("JobSeekerRepository/resume_add...!");
         log.info("Received careers in service: " + resumeForm.getCareers());
+
         // Resume 객체를 가져와서 저장
         Resume resume = resumeForm.getResume();
 
         // 각 Career 객체에 Resume 객체를 설정
         List<Career> careers = resumeForm.getCareers();
         if (careers != null) {
-            for (Career career : careers) {
+            // CopyOnWriteArrayList 사용
+            List<Career> careersToSave = new CopyOnWriteArrayList<>(careers);
+            log.info("Original careers list size: " + careers.size());
+            log.info("Copied careers list size: " + careersToSave.size());
+
+            for (Career career : careersToSave) {
+                log.info("Setting resume for career: " + career);
                 career.setResume(resume);
             }
-        }
-        // Resume 객체에 Careers 리스트 설정
-        resume.setCareers(careers);
-        // Resume 저장
-        resumeRepository.save(resume);
-        // 각 Career 객체 저장 (CascadeType.ALL을 사용하여 자동으로 저장되도록 할 수도 있습니다)
-        if (careers != null) {
-            for (Career career : careers) {
+
+            // Resume 객체에 Careers 리스트 설정
+            resume.setCareers(careersToSave);
+
+            // Resume 저장
+            log.info("Saving resume: " + resume);
+            resumeRepository.save(resume);
+
+            // 각 Career 객체 저장 (CascadeType.ALL을 사용하여 자동으로 저장되도록 할 수도 있습니다)
+            for (Career career : careersToSave) {
+                log.info("Saving career: " + career);
                 careerRepository.save(career);
             }
+        } else {
+            // Resume 저장 (Careers가 없는 경우)
+            log.info("Saving resume without careers: " + resume);
+            resumeRepository.save(resume);
         }
     }
 
@@ -105,24 +121,52 @@ public class JobSeekerServiceImpl {
 
 
     @Transactional(rollbackFor = Exception.class)
-    public void resume_update(long id, Resume updatedResume) {
+    public void resume_update(long id, ResumeFormDto updatedResume) {
         // 이력서 업데이트 처리
         Optional<Resume> optionalResume = resumeRepository.findById(id);
 
-
         if (optionalResume.isPresent()) {
             Resume resume = optionalResume.get();
+            Resume updatedResumeDto = updatedResume.getResume();
+            System.out.println("updatedResumeDto : "+ updatedResumeDto);
+
             // 수정된 내용 업데이트
-            resume.setName(updatedResume.getName());
-            resume.setEmail(updatedResume.getEmail());
-            resume.setPhone(updatedResume.getPhone());
-            resume.setSchoolName(updatedResume.getSchoolName());
-            resume.setMajor(updatedResume.getMajor());
-            resume.setGraduationYear(updatedResume.getGraduationYear());
-            resume.setSummary(updatedResume.getSummary());
-            resume.setHobbies(updatedResume.getHobbies());
-            // 나머지 필드도 동일하게 업데이트
-                    // 수정된 이력서 저장
+            resume.setName(updatedResumeDto.getName());
+            resume.setEmail(updatedResumeDto.getEmail());
+            resume.setPhone(updatedResumeDto.getPhone());
+            resume.setSchoolName(updatedResumeDto.getSchoolName());
+            resume.setMajor(updatedResumeDto.getMajor());
+            resume.setGraduationYear(updatedResumeDto.getGraduationYear());
+            resume.setSummary(updatedResumeDto.getSummary());
+            resume.setHobbies(updatedResumeDto.getHobbies());
+
+            // 기존 경력 사항 업데이트
+            List<Career> existingCareers = resume.getCareers();
+            System.out.println("existingCareers : "+existingCareers);
+            List<Career> updatedCareers = updatedResume.getCareers();
+            System.out.println("updatedCareers : "+updatedCareers);
+
+            int minSize = Math.min(existingCareers.size(), updatedCareers.size());
+            for (int i = 0; i < minSize; i++) {
+                Career existingCareer = existingCareers.get(i);
+                Career updatedCareer = updatedCareers.get(i);
+                existingCareer.setCompanyName(updatedCareer.getCompanyName());
+                existingCareer.setPosition(updatedCareer.getPosition());
+                existingCareer.setStartDate(updatedCareer.getStartDate());
+                existingCareer.setEndDate(updatedCareer.getEndDate());
+            }
+
+            // 새 경력 사항 추가
+            if (updatedCareers.size() > existingCareers.size()) {
+                for (int i = existingCareers.size(); i < updatedCareers.size(); i++) {
+                    resume.addCareer(updatedCareers.get(i));
+                }
+            }
+
+            log.info("resume : " + resume);
+            log.info("getCareers : " + resume.getCareers());
+
+            // 수정된 이력서 저장
             resumeRepository.save(resume);
             log.info("Resume with id {} updated successfully", id);
         } else {
@@ -130,6 +174,8 @@ public class JobSeekerServiceImpl {
         }
     }
 
-
-
 }
+
+
+
+

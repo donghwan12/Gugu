@@ -14,23 +14,15 @@ public class Career {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public String companyName;
-    public String position;
-    public String startDate;
-    public String endDate;
+    private  String companyName;
+    private String position;
+    private String startDate;
+    private String endDate;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL )
-    @JoinColumn(name = "resume_id")
-    public Resume resume;
+    @ManyToOne
+    @JoinColumn(name = "resume_id",foreignKey = @ForeignKey(name="FK_Resume_Carrer",
+            foreignKeyDefinition ="FOREIGN KEY(resume_id) REFERENCES resume(id) ON DELETE CASCADE ON UPDATE CASCADE" ))
+    private Resume resume;
 
-    @Override
-    public String toString() {
-        return "Career{" +
-                "id=" + id +
-                ", companyName='" + companyName + '\'' +
-                ", position='" + position + '\'' +
-                ", startDate='" + startDate + '\'' +
-                ", endDate='" + endDate + '\'' +
-                '}';
-    }
+
 }

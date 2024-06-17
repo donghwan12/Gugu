@@ -13,6 +13,9 @@ import java.util.List;
 @AllArgsConstructor
 public class ResumeFormDto {
 
+
     private Resume resume;
     private List<Career> careers;
+
+
 }

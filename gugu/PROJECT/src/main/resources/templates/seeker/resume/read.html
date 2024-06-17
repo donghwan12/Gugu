@@ -28,8 +28,8 @@
         .resume-details dd {
             margin-left: 0;
         }
-        .update{
-          background: #5cb85c;
+        .update {
+            background: #5cb85c;
             color: #fff;
             border: none;
             padding: 10px 20px;
@@ -37,6 +37,17 @@
             border-radius: 4px;
             margin-top: 20px;
         }
+        .update{
+            display:button
+            margin-top: 20px;
+            background: #5cb85c;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
     </style>
 </head>
 <body>
@@ -70,17 +81,19 @@
                     <dt>졸업년도</dt>
                     <dd th:text="${resume.graduationYear}"></dd>
                 </dl>
+
                 <h2>경력</h2>
-                    <dl th:each="career : ${resume.careers}">
-                        <dt>회사명</dt>
-                        <dd th:text="${career.companyName}"></dd>
-                        <dt>직급</dt>
-                        <dd th:text="${career.position}"></dd>
-                        <dt>시작일</dt>
-                        <dd th:text="${career.startDate}"></dd>
-                        <dt>종료일</dt>
-                        <dd th:text="${career.endDate}"></dd>
-                    </dl>
+                <dl th:each="career : ${resume.careers}">
+                    <dt>회사명</dt>
+                    <dd th:text="${career.companyName}"></dd>
+                    <dt>직급</dt>
+                    <dd th:text="${career.position}"></dd>
+                    <dt>시작일</dt>
+                    <dd th:text="${career.startDate}"></dd>
+                    <dt>종료일</dt>
+                    <dd th:text="${career.endDate}"></dd>
+                </dl>
+
                 <h2>기술 및 자격증</h2>
                 <dl>
                     <dt>자격증명</dt>
@@ -88,22 +101,22 @@
                 </dl>
 
                 <h2>자기소개서</h2>
-                <p th:text="${resume.summary}"></p>
-
-                <h2>기타</h2>
+                <p id="summaryContent" th:utext="${#strings.replace(resume.summary, '\n', '<br/>')}"></p>
+                <h2>취미</h2>
                 <p th:text="${resume.hobbies}"></p>
             </div>
-<<<<<<< HEAD
-            <a class="update" th:href="@{/seeker/resume/update/{id}(id=${resume.id})}">수정하기</a>
-=======
-
-             <a th:href="@{/seeker/resume/update/{id}(id=${resume.id})}">수정하기</a>
->>>>>>> 6b4870cdb126c34750165de66a937f3fe6e6144d
-
+            <a th:href="@{/seeker/resume/update/{id}(id=${resume.id})}" class="update">수정하기</a>
         </section>
     </main>
     <!-- footer -->
     <th:block th:insert="~{fragments/footer :: footerFragment}" />
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var summaryContent = document.getElementById('summaryContent');
+        var text = summaryContent.innerText;
+        summaryContent.innerHTML = text.replace(/\n/g, '<br>');
+    });
+</script>
 </body>
 </html>

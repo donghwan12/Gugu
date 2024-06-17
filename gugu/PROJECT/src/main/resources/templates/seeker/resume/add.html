@@ -177,6 +177,27 @@
             careerIndexInput.value = index;
             newCareer.appendChild(careerIndexInput);
         }
+        document.addEventListener('DOMContentLoaded', function() {
+        const summaryTextarea = document.getElementById('summary');
+
+        summaryTextarea.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            // Prevent default newline behavior in textarea
+            e.preventDefault();
+
+            // Insert newline character into the textarea
+            const cursorPosition = this.selectionStart;
+            const textBeforeCursor = this.value.substring(0, cursorPosition);
+            const textAfterCursor = this.value.substring(cursorPosition);
+            this.value = textBeforeCursor + "\n" + textAfterCursor;
+
+            // Optionally, adjust textarea height dynamically based on content
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+        }
+    });
+});
+
     </script>
 </head>
 <body>
