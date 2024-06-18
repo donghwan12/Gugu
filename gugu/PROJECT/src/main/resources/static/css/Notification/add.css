@@ -7,7 +7,7 @@ body {
 }
 
 .wrapper {
-    max-width: 1200px;
+    max-width: 100%
     margin: 0 auto;
     padding: 20px;
     background-color: #fff;
@@ -74,4 +74,14 @@ h2 {
 
 .form_group button:hover {
     opacity: 0.8;
+}
+.notifi_add{
+    display:button;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: gray;
+    text-decoration: none;
+    color:  #fff;
+     margin:10px;
 }

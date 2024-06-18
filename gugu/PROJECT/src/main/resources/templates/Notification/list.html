@@ -3,41 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>공지사항</title>
-
-    <!--  link   -->
     <th:block th:insert="~{fragments/link :: linkFragment}" />
-
     <link rel="stylesheet" href="/css/Notification/list.css"/>
 </head>
 <body>
-
 <div class="wrapper">
     <header>
-        <!-- header   -->
         <th:block th:insert="~{fragments/top_header :: topHeaderFragment}" />
-        <!-- nav       -->
         <th:block th:insert="~{fragments/nav :: navFragment}" />
     </header>
     <main>
         <h2>공지사항</h2>
         <div class="wrap_body">
+            <div class="board-header">
+                현재 페이지 : (<span th:text="${pageNo}"></span> / <span th:text="${pageDto.totalpage}"></span> Page)
+            </div>
             <div class="wrap_board">
-                <ul class="tabList">
-                    <li><button type="button" class="inTab"><span>전체</span></button></li>
-                </ul>
+
                 <div class="search_area"></div>
                 <div class="notice_list">
                     <table>
                         <thead>
                         <tr>
-                            <th>공지</th>
+                            <th>번호</th>
                             <th class="title">제목</th>
                             <th>작성일</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="notification : ${notifications}">
-                            <td th:text="${notification.id}"></td>
+                        <tr th:each="notification, index : ${list}" >
+                            <td th:text="${(pageNo - 1) * pageDto.criteria.amount + index.index + 1}"></td>
                             <td>
                                 <a th:href="@{/Notification/read/{id}(id=${notification.id})}" th:text="${notification.title}"></a>
                             </td>
@@ -45,12 +40,35 @@
                         </tr>
                         </tbody>
                     </table>
+                    <a href="/Notification/add" class="notifi_add">공지작성</a>
                 </div>
             </div>
         </div>
+        <div class="board-footer row position-relative">
+            <div class="pagenation col-9" th:if="${not #lists.isEmpty(list)}">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <!-- PREV -->
+                        <li class="page-item" th:if="${pageDto.prev}">
+                            <a class="page-link" th:href="@{/Notification/list(pageNo=${pageDto.nowBlock * pageDto.pagePerBlock - pageDto.pagePerBlock*2 + 1})}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <!-- PAGENATION -->
+                        <li class="page-item" th:each="i : ${#numbers.sequence(pageDto.startPage, pageDto.endPage)}">
+                            <a class="page-link" th:href="@{/Notification/list(pageNo=${i})}"><span th:text="${i}"></span></a>
+                        </li>
+                        <!-- NEXT -->
+                        <li class="page-item" th:if="${pageDto.next}">
+                            <a class="page-link" th:href="@{/Notification/list(pageNo=${pageDto.nowBlock * pageDto.pagePerBlock + 1})}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
     </main>
-
-    <!-- footer       -->
     <th:block th:insert="~{fragments/footer :: footerFragment}" />
 </div>
 </body>

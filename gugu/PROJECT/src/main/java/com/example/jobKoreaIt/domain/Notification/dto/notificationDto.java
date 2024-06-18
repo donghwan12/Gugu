@@ -16,4 +16,5 @@ public class notificationDto {
     private String author;
     private String contents; //내용
     private LocalDateTime createAt; //공지사항 생성 된 날짜
+    private LocalDateTime updateAt;
 }

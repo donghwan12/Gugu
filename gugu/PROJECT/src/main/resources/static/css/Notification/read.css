@@ -56,11 +56,12 @@ h2 {
 }
 
 .notification_detail div {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-    height:400px;
+     max-height: 400px !important;
+        overflow-y: auto !important;
+        padding: 10px !important;
+        border: 1px solid #ccc !important;
+        border-radius: 5px !important;
+        background-color: #fff !important;
 }
 .buttons{
     display:flex;
@@ -72,8 +73,8 @@ h2 {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background-color: gray; /* 배경색을 설정하세요 */
-    text-decoration: none; /* 링크 텍스트의 밑줄을 제거합니다 */
+    background-color: gray;
+    text-decoration: none;
     color:  #fff;
      margin:10px;
 }
@@ -83,9 +84,9 @@ h2 {
     border-radius: 5px;
     margin:10px;
     cursor: pointer;
-    background-color: gray; /* 배경색을 설정하세요 */
-    color: #fff; /* 텍스트 색상을 설정하세요 */
-    text-decoration: none; /* 링크 텍스트의 밑줄을 제거합니다 */
+    background-color: gray;
+    color: #fff;
+    text-decoration: none;
 }
 .go_update{
 display: inline-block;
@@ -93,7 +94,7 @@ display: inline-block;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background-color:gray; /* 배경색을 설정하세요 */
-    text-decoration: none; /* 링크 텍스트의 밑줄을 제거합니다 */
-    color: #fff; /* 텍
+    background-color:gray;
+    text-decoration: none;
+    color: #fff;
 }

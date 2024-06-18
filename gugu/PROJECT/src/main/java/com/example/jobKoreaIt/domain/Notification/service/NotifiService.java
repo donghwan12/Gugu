@@ -1,5 +1,7 @@
 package com.example.jobKoreaIt.domain.Notification.service;
 
+import com.example.jobKoreaIt.domain.Notification.dto.Criteria;
+import com.example.jobKoreaIt.domain.Notification.dto.PageDto;
 import com.example.jobKoreaIt.domain.Notification.dto.notificationDto;
 import com.example.jobKoreaIt.domain.Notification.entity.NotifiEntity;
 import com.example.jobKoreaIt.domain.Notification.repository.NotifiRepository;
@@ -10,7 +12,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -101,6 +105,25 @@ public class NotifiService {
 //            update_notifi.setCreateAt(notificationDto.getCreateAt());
             log.info("update_notifi : "+update_notifi);
         }
+    }
+
+    //페이지 블럭처리=====================
+    public Map<String,Object>NotificationBlock(Criteria criteria){
+        Map<String, Object> blocks = new HashMap<>();
+
+        int totalcount = (int) notifiRepository.count();
+        System.out.println("totalcount : " + totalcount);
+        PageDto pageDto = new PageDto(totalcount, criteria);
+
+        int offset = (criteria.getPageno() - 1) * criteria.getAmount();
+
+        List<NotifiEntity> list = notifiRepository.findCommunityAmountStart(criteria.getAmount(), offset);
+
+        blocks.put("list", list);
+        blocks.put("pageDto", pageDto);
+        blocks.put("totalcount", totalcount);
+
+        return blocks;
     }
 }
 

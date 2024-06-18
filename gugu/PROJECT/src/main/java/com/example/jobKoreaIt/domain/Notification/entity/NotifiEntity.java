@@ -26,5 +26,7 @@ public class NotifiEntity {
 
     private LocalDateTime createAt;
 
+    private LocalDateTime updateAt;
+
 
 }
