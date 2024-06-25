@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<th:block th:fragment="footerFragment">
+    <footer class="bg-dark">
+        <style>
+            footer{
+              color : white;
+            }
+            .footer-main{
+              height : 150px;
+
+
+              display:flex;
+              justify-content: start;
+              align-items: center;
+
+            }
+            .footer-main>*{
+              margin :10px;
+            }
+            .footer-main>div{
+              position:relative;
+            }
+            .footer-main>div::after{
+              content :'';
+              height : 18px;
+              /* border : 1px solid white; */
+              display:block;
+              position:absolute;
+              left:0px;
+              top:-25px;
+              width : 100%;
+              color : lightgray;
+              font-size : .5rem;
+              text-align:center;
+            }
+            .footer-main>div.github::after{
+              content : "GITHUB";
+            }
+            .footer-main>div.instar::after{
+              content : "INSTRAGRAM";
+            }
+            .footer-main>div.facebook::after{
+              content : "FACEBOOK";
+            }
+            .footer-bottom{
+              font-size : .5rem;
+              font-family: "맑은 고딕";
+              text-align: right;
+              padding-right : 10px;
+            }
+        </style>
+        <div class="footer-top">
+            <ul>
+                <li><a href="javascript:void(0)" target="_blank">회사소개</a></li>
+                <li><a href="javascript:void(0)" target="_blank">인재채용</a></li>
+                <li><a href="javascript:void(0)" target="_blank">회원약관</a></li>
+                <li><a href="javascript:void(0)" target="_blank">개인정보처리방침</a></li>
+                <li><a href="javascript:void(0)" target="_blank">제휴문의</a></li>
+                <li><a href="javascript:void(0)" target="_blank">이메일무단수집거부</a></li>
+                <li><a href="javascript:void(0)" target="_blank">고객센터</a></li>
+            </ul>
+        </div>
+        <div class="footer-main layout-150">
+
+            <div>
+                    <div class="footer-logo">
+                        <img src="/assets/logo.png" alt="">
+                    </div>
+                    <div class="footer-contents">
+                        <div>
+                            <div>
+                                구구 고객센터 02-2025-4733 (평일 09:00~19:00, 주말·공휴일 휴무)<br>
+                                이메일 : help@googoo.co.kr, Fax : 02-0000-0000(대표), 02-0000-0000(세금계산서)<br>
+                            </div>
+
+                            <hr>
+
+                            <div>
+                                (주)구구, 우 : 08378, 대구광역시 달서구 갈밭로 111, 대표 : 홍길동<br>
+                                사업자등록 : 111-11-11111, 직업정보제공사업 : 서울 관악 제 1111-1호, 통신판매업 : 제 1111-11111호<br>
+                                Copyright (c) (주)구구. All rights reserved.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sns">
+                        <div class="github"><a href=""><img src="/assets/githublogo.png" alt="" style="width:50px;height:50px;"></a></div>
+                        <div class="instar"><a href=""><img src="/assets/instraicon.png" alt="" style="width:50px;height:50px;"></a></div>
+                        <div class="facebook"><a href=""><img src="/assets/facebookicon.png" alt="" style="width:50px;height:50px;"></a></div>
+                    </div>
+            </div>
+
+        </div>
+
+        <br>
+
+        <div class="footer-bottom layout-150">
+        </div>
+    </footer>
+</th:block>
+
+
+</body>
+</html>

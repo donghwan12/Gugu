@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${entity.title}">공지사항 상세 보기</title>
+
+    <link rel="stylesheet" href="/css/notification/read.css">
+
+    <!-- link -->
+    <th:block th:insert="~{fragments/link :: linkFragment}" />
+
+
+</head>
+<body>
+
+<div class="wrapper">
+   <header>
+       <!-- header -->
+       <th:block th:insert="~{fragments/top_header :: topHeaderFragment}" />
+       <!-- nav -->
+       <th:block th:insert="~{fragments/nav :: navFragment}" />
+
+   </header>
+    <main>
+        <h2 th:text="${entity.title}"></h2>
+        <div class="wrap_body">
+            <div class="wrap_board">
+                <div class="notification_detail">
+                    <p><strong>작성자:</strong> <span th:text="${entity.author}">작성자 없음</span></p>
+                    <p><strong>작성일:</strong> <span th:text="${entity.createAt}">날짜 없음</span></p>
+                    <p><strong>내용:</strong></p>
+                    <div th:utext="${entity.contents}">내용 없음</div>
+                </div>
+            </div>
+        </div>
+        <div class="buttons">
+            <a class="go_List" th:href="@{/notification/list}">목록으로 돌아가기</a>
+
+            <form id="deleteForm" th:action="@{/notification/read/delete/{id}(id=${entity.id})}" method="post">
+                <button type="submit" class="delete_button">삭제</button>
+            </form>
+            <a class="go_update" th:href="@{/notification/update/{id}(id=${entity.id})}">수정하기</a>
+        </div>
+    </main>
+    <!-- footer -->
+    <th:block th:insert="~{fragments/footer :: footerFragment}" />
+</div>
+
+</body>
+</html>

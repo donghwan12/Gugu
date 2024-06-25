@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--  link   -->
+    <th:block th:insert="~{fragments/link :: linkFragment}" />
+
+    <link rel="stylesheet" href="/css/seeker/myinfo.css">
+
+    <script src="/js/template.js" defer></script>
+
+
+</head>
+<body>
+
+<div class="wrapper">
+    <header>
+        <!-- header   -->
+        <th:block th:insert="~{fragments/top_header :: topHeaderFragment}" />
+        <!-- nav       -->
+        <th:block th:insert="~{fragments/nav :: navFragment}" />
+
+    </header>
+    <section class="layout-150">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">홈</a></li>
+                <li class="breadcrumb-item"><a href="#">구직자</a></li>
+                <li class="breadcrumb-item active" aria-current="page">나의정보</li>
+            </ol>
+        </nav>
+    </section>
+    <main>
+        <aside>
+
+        </aside>
+        <section>
+
+        </section>
+
+    </main>
+
+    <!-- footer       -->
+    <th:block th:insert="~{fragments/footer :: footerFragment}" />
+</div>
+</body>
+</html>

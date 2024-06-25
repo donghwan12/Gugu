@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <title>이력서 상세정보</title>
+    <!-- link -->
+    <th:block th:insert="~{fragments/link :: linkFragment}" />
+    <style>
+        /* 스타일링 */
+        .resume-details {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .resume-details h2 {
+            margin-bottom: 10px;
+        }
+        .resume-details dl {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .resume-details dt {
+            font-weight: bold;
+        }
+        .resume-details dd {
+            margin-left: 0;
+        }
+        .update {
+            background: #5cb85c;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+        .update{
+            display:button
+            margin-top: 20px;
+            background: #5cb85c;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <!-- header -->
+        <th:block th:insert="~{fragments/top_header :: topHeaderFragment}" />
+        <!-- nav -->
+        <th:block th:insert="~{fragments/nav :: navFragment}" />
+    </header>
+    <main>
+        <section>
+            <h1>이력서 상세정보</h1>
+            <div class="resume-details">
+                <h2>기본 정보</h2>
+                <dl>
+                    <dt>이름</dt>
+                    <dd th:text="${resume.name}"></dd>
+                    <dt>Email</dt>
+                    <dd th:text="${resume.email}"></dd>
+                    <dt>전화번호</dt>
+                    <dd th:text="${resume.phone}"></dd>
+                </dl>
+
+                <h2>학력</h2>
+                <dl>
+                    <dt>학교명</dt>
+                    <dd th:text="${resume.schoolName}"></dd>
+                    <dt>전공</dt>
+                    <dd th:text="${resume.major}"></dd>
+                    <dt>졸업년도</dt>
+                    <dd th:text="${resume.graduationYear}"></dd>
+                </dl>
+
+                <h2>경력</h2>
+                <dl th:each="career : ${resume.careers}">
+                    <dt>회사명</dt>
+                    <dd th:text="${career.companyName}"></dd>
+                    <dt>직급</dt>
+                    <dd th:text="${career.position}"></dd>
+                    <dt>시작일</dt>
+                    <dd th:text="${career.startDate}"></dd>
+                    <dt>종료일</dt>
+                    <dd th:text="${career.endDate}"></dd>
+                </dl>
+
+                <h2>기술 및 자격증</h2>
+                <dl>
+                    <dt>자격증명</dt>
+                    <dd th:text="${resume.certificationName}"></dd>
+                </dl>
+
+                <h2>자기소개서</h2>
+                <p id="summaryContent" th:utext="${#strings.replace(resume.summary, '\n', '<br/>')}"></p>
+                <h2>취미</h2>
+                <p th:text="${resume.hobbies}"></p>
+            </div>
+            <a th:href="@{/seeker/resume/update/{id}(id=${resume.id})}" class="update">수정하기</a>
+        </section>
+    </main>
+    <!-- footer -->
+    <th:block th:insert="~{fragments/footer :: footerFragment}" />
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var summaryContent = document.getElementById('summaryContent');
+        var text = summaryContent.innerText;
+        summaryContent.innerHTML = text.replace(/\n/g, '<br>');
+    });
+</script>
+</body>
+</html>

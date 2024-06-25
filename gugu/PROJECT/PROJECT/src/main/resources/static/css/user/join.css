@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+.right>div:nth-child(1){
+	padding-bottom : 5px;
+	border-bottom : 1px solid lightgray;
+	
+}
+.right .header{
+	font-size:.8rem;
+}
+
+.main-block{
+	height : 700px;
+	width : 400px;	
+	border : 1px solid gray;
+	border-radius : 5px;
+	margin : 0 auto;
+	overflow : auto;
+}
+.main-block>.right{
+
+	padding : 10px;
+}
+
+.main-block label{
+	font-size : .8rem;
+}
+
+.hidden{
+	display:none;
+}
+

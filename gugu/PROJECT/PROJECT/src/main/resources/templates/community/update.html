@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--  link   -->
+    <th:block th:insert="~{fragments/link :: linkFragment}" />
+
+
+    <link rel="stylesheet" href="/css/community/read.css">
+
+    <script src="/js/community/update.js" defer></script>
+
+    <!--  MODEL 속성가져오기  -->
+    <script th:inline="javascript">
+        let  community = /*[[${community}]]*/
+        let  pageNo = /*[[${pageNo}]]*/
+        console.log(community);
+    </script>
+s
+
+
+</head>
+<body>
+
+<div class="wrapper">
+    <header>
+        <!-- header   -->
+        <th:block th:insert="~{fragments/top_header :: topHeaderFragment}" />
+        <!-- nav       -->
+        <th:block th:insert="~{fragments/nav :: navFragment}" />
+
+    </header>
+    <main>
+        <section class="layout-150">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">홈</a></li>
+                    <li class="breadcrumb-item"><a href="#">커뮤니티</a></li>
+                    <li class="breadcrumb-item"><a href="#">게시글 읽기</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">게시글 수정</li>
+                </ol>
+            </nav>
+        </section>
+
+        <section class="layout-150">
+            <div class="head">
+                <div class="bedge">TITLE</div>
+                <div class="title" th:text="${community.title}"></div>
+            </div>
+            <div class="info">
+                <div class="left">
+                    <div>
+                        <img src="" alt="P" />
+                    </div>
+                    <div>
+                        <div th:text="${community.username}"></div>
+                        <div th:text="${#temporals.format(community.regdate, 'yyyy-MM-dd HH:mm:ss')}"></div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div>
+                        <span class="material-symbols-outlined">thumb_up</span>&nbsp;
+                        <span>17</span>
+                    </div>
+                    <div>
+                        <span class="material-symbols-outlined">chat_bubble</span>&nbsp;
+                        <span>15</span>
+                    </div>
+                    <div>
+                        <span class="material-symbols-outlined bookmark">bookmark</span>&nbsp;
+                    </div>
+
+                </div>
+            </div>
+            <div class="content-block">
+                <textarea class="form-control text" th:text="${community.content}">
+
+                </textarea>
+            </div>
+            <div class="imogi">
+                <div class="one">
+                    <span>😀</span>
+                    <div>1</div>
+                </div>
+                <div class="two">
+                    <span>😁</span>
+                    <div>1</div>
+                </div>
+                <div class="three">
+                    <span>🤓</span>
+                    <div>1</div>
+                </div>
+                <div class="four">
+                    <span>😥</span>
+                    <div>1</div>
+                </div>
+            </div>
+            <div class="btn-group">
+                <a href="javascript:void(0)"   class="btn btn-primary req_upate_btn">수정완료</a>
+            </div>
+        </section>
+        <section class="reply layout-150">
+
+            <form action="">
+
+                <div class="reply-text">
+                    <label>댓글작성 : </label>
+                    <textarea class="form-control"></textarea>
+                </div>
+                <div class="control-block">
+                    <div class="reply-image">
+                        <!--                        <input type="file" name="file" class="form-control w-100" id="imgUpload">-->
+                    </div>
+                    <div class="reply-button">
+                        <a class="btn btn-primary w-100">댓글 등록</a>
+                    </div>
+                </div>
+            </form>
+
+            <hr>
+
+            <div class="filter">
+                <select name="type" id="" class="form-select w-25">
+                    <option value="" selected>최신 댓글순</option>
+                    <option value="" selected>인기 댓글순</option>
+                </select>
+            </div>
+            <div class="reply items">
+
+
+                <!--  REPLY                                   -->
+                <div class="item">
+                    <hr>
+                    <div class="content">
+                        <div>안녕하세요! 반도체 품질 직무 프로 털보아저씨입니다.</div>
+                        <div>보상 받기는 어려울 것 같습니다.. 인사담당자의 실수였기 때문에 추후 면접 일정을 잡을 때는 멘티님의 일정에 맞추어 진행해 달라고</div>
+                        <div>요청하시는 정도는 가능할 것으로 보입니다. 연차까지 쓰고 가셨는데... 고생 많이 하셨습니다 ㅠㅠ</div>
+                    </div>
+
+                    <div class="foot">
+                        <div>
+                            <div>
+                                <a href="">
+                                    <span class="material-symbols-outlined">thumb_up</span>
+                                    <span>공감하기</span>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="">
+                                    <span class="material-symbols-outlined">chat_bubble</span>
+                                    <span>대댓글달기</span>
+                                </a>
+
+                            </div>
+                        </div>
+
+                        <div>
+                            <div>
+                                <span>계정명</span>
+                            </div>
+                            &nbsp;&nbsp;|&nbsp;&nbsp;
+                            <div>
+                                <span>2024-01-01 HH:MM:SS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--  REPLY                                   -->
+                <!--  REPLY                                   -->
+                <div class="item">
+                    <hr>
+                    <div class="content">
+                        <div>안녕하세요! 반도체 품질 직무 프로 털보아저씨입니다.</div>
+                        <div>보상 받기는 어려울 것 같습니다.. 인사담당자의 실수였기 때문에 추후 면접 일정을 잡을 때는 멘티님의 일정에 맞추어 진행해 달라고</div>
+                        <div>요청하시는 정도는 가능할 것으로 보입니다. 연차까지 쓰고 가셨는데... 고생 많이 하셨습니다 ㅠㅠ</div>
+                    </div>
+
+                    <div class="foot">
+                        <div>
+                            <div>
+                                <a href="">
+                                    <span class="material-symbols-outlined">thumb_up</span>
+                                    <span>공감하기</span>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="">
+                                    <span class="material-symbols-outlined">chat_bubble</span>
+                                    <span>대댓글달기</span>
+                                </a>
+
+                            </div>
+                        </div>
+
+                        <div>
+                            <div>
+                                <span>계정명</span>
+                            </div>
+                            &nbsp;&nbsp;|&nbsp;&nbsp;
+                            <div>
+                                <span>2024-01-01 HH:MM:SS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--  REPLY                                   -->
+                <!--  REPLY                                   -->
+                <div class="item">
+                    <hr>
+                    <div class="content">
+                        <div>안녕하세요! 반도체 품질 직무 프로 털보아저씨입니다.</div>
+                        <div>보상 받기는 어려울 것 같습니다.. 인사담당자의 실수였기 때문에 추후 면접 일정을 잡을 때는 멘티님의 일정에 맞추어 진행해 달라고</div>
+                        <div>요청하시는 정도는 가능할 것으로 보입니다. 연차까지 쓰고 가셨는데... 고생 많이 하셨습니다 ㅠㅠ</div>
+                    </div>
+
+                    <div class="foot">
+                        <div>
+                            <div>
+                                <a href="">
+                                    <span class="material-symbols-outlined">thumb_up</span>
+                                    <span>공감하기</span>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="">
+                                    <span class="material-symbols-outlined">chat_bubble</span>
+                                    <span>대댓글달기</span>
+                                </a>
+
+                            </div>
+                        </div>
+
+                        <div>
+                            <div>
+                                <span>계정명</span>
+                            </div>
+                            &nbsp;&nbsp;|&nbsp;&nbsp;
+                            <div>
+                                <span>2024-01-01 HH:MM:SS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--  REPLY                                   -->
+                <!--  REPLY                                   -->
+                <div class="item">
+                    <hr>
+                    <div class="content">
+                        <div>안녕하세요! 반도체 품질 직무 프로 털보아저씨입니다.</div>
+                        <div>보상 받기는 어려울 것 같습니다.. 인사담당자의 실수였기 때문에 추후 면접 일정을 잡을 때는 멘티님의 일정에 맞추어 진행해 달라고</div>
+                        <div>요청하시는 정도는 가능할 것으로 보입니다. 연차까지 쓰고 가셨는데... 고생 많이 하셨습니다 ㅠㅠ</div>
+                    </div>
+
+                    <div class="foot">
+                        <div>
+                            <div>
+                                <a href="">
+                                    <span class="material-symbols-outlined">thumb_up</span>
+                                    <span>공감하기</span>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="">
+                                    <span class="material-symbols-outlined">chat_bubble</span>
+                                    <span>대댓글달기</span>
+                                </a>
+
+                            </div>
+                        </div>
+
+                        <div>
+                            <div>
+                                <span>계정명</span>
+                            </div>
+                            &nbsp;&nbsp;|&nbsp;&nbsp;
+                            <div>
+                                <span>2024-01-01 HH:MM:SS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--  REPLY                                   -->
+                <!--  REPLY                                   -->
+                <div class="item">
+                    <hr>
+                    <div class="content">
+                        <div>안녕하세요! 반도체 품질 직무 프로 털보아저씨입니다.</div>
+                        <div>보상 받기는 어려울 것 같습니다.. 인사담당자의 실수였기 때문에 추후 면접 일정을 잡을 때는 멘티님의 일정에 맞추어 진행해 달라고</div>
+                        <div>요청하시는 정도는 가능할 것으로 보입니다. 연차까지 쓰고 가셨는데... 고생 많이 하셨습니다 ㅠㅠ</div>
+                    </div>
+
+                    <div class="foot">
+                        <div>
+                            <div>
+                                <a href="">
+                                    <span class="material-symbols-outlined">thumb_up</span>
+                                    <span>공감하기</span>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="">
+                                    <span class="material-symbols-outlined">chat_bubble</span>
+                                    <span>대댓글달기</span>
+                                </a>
+
+                            </div>
+                        </div>
+
+                        <div>
+                            <div>
+                                <span>계정명</span>
+                            </div>
+                            &nbsp;&nbsp;|&nbsp;&nbsp;
+                            <div>
+                                <span>2024-01-01 HH:MM:SS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--  REPLY                                   -->
+                <!--  REPLY                                   -->
+                <div class="item">
+                    <hr>
+                    <div class="content">
+                        <div>안녕하세요! 반도체 품질 직무 프로 털보아저씨입니다.</div>
+                        <div>보상 받기는 어려울 것 같습니다.. 인사담당자의 실수였기 때문에 추후 면접 일정을 잡을 때는 멘티님의 일정에 맞추어 진행해 달라고</div>
+                        <div>요청하시는 정도는 가능할 것으로 보입니다. 연차까지 쓰고 가셨는데... 고생 많이 하셨습니다 ㅠㅠ</div>
+                    </div>
+
+                    <div class="foot">
+                        <div>
+                            <div>
+                                <a href="">
+                                    <span class="material-symbols-outlined">thumb_up</span>
+                                    <span>공감하기</span>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="">
+                                    <span class="material-symbols-outlined">chat_bubble</span>
+                                    <span>대댓글달기</span>
+                                </a>
+
+                            </div>
+                        </div>
+
+                        <div>
+                            <div>
+                                <span>계정명</span>
+                            </div>
+                            &nbsp;&nbsp;|&nbsp;&nbsp;
+                            <div>
+                                <span>2024-01-01 HH:MM:SS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--  REPLY                                   -->
+            </div>
+
+
+        </section>
+    </main>
+
+    <!-- footer       -->
+    <th:block th:insert="~{fragments/footer :: footerFragment}" />
+</div>
+</body>
+</html>

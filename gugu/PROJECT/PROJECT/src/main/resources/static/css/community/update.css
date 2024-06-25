@@ -1,0 +1,225 @@
+
+section:nth-child(2),
+section:nth-child(3)
+{
+    width : 800px;
+    margin : 0 auto;
+    padding : 20px;
+    /*border : 1px solid;*/
+
+    position:relative;
+}
+
+/*기본 읽기*/
+section:nth-child(2) .head{
+    display:flex;
+    justify-content : left;
+    align-items : center;
+}
+section:nth-child(2) .head>*{
+    margin : 5px;
+}
+section:nth-child(2) .head .bedge{
+    font-size : .8rem;
+    color :green;
+    border : 1px solid;
+    width : 50px;
+    height : 25px;
+    text-align:center;
+    margin-left : 0px;
+}
+
+section:nth-child(2) .head .title{
+    font-size : 1rem;
+    font-weight : 800;
+
+}
+
+section:nth-child(2) .info{
+    display:flex;
+    justify-content : space-between;
+    align-items :center;
+}
+section:nth-child(2) .info .left{
+    display:flex;
+    justify-content : left;
+    align-items : center;
+    width : 100%;
+}
+section:nth-child(2) .info .left>*{
+    margin : 10px;
+}
+section:nth-child(2) .info .left>div:nth-child(1){
+    width : 50px;
+    height : 50px;
+
+
+    display:flex;
+    justify-content : center;
+    align-items : center;
+}
+section:nth-child(2) .info .left img{
+    width : 50px;
+    height : 50px;
+    border : 1px solid;
+    border-radius:50%;
+}
+
+
+section:nth-child(2) .info .right{
+
+    display:flex;
+    justify-content : right;
+    align-items :start;
+    font-size : .7rem;
+}
+section:nth-child(2) .info .right>*{
+    margin : 5px;
+    width : 45px;
+    height : 50%;
+    /*border : 1px solid;*/
+
+}
+section:nth-child(2) .info .right .material-symbols-outlined{
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48;
+
+  font-size : 1.2rem;
+}
+section:nth-child(2) .info .right ..material-symbols-outlined.bookmark{
+     font-variation-settings:
+     'FILL' 0,
+     'wght' 400,
+     'GRAD' 0,
+     'opsz' 48;
+
+  font-size : 1.2rem;
+}
+
+section:nth-child(2) .text{
+    height : 500px;
+    border : 1px solid lightgray;
+    border-radius : 5px;
+    padding : 10px;
+
+    font-size : .9rem;
+    color : gray;
+}
+
+section:nth-child(2) .imogi{
+    width : 100%;
+    position:relative;
+    border : 1px solid lightgray;
+    margin-top : 10px;
+    display:flex;
+    justify-content : center;
+    align-items : center;
+    font-size : 2rem;
+    text-align:center;
+}
+section:nth-child(2) .imogi>*{
+    margin : 5px;
+}
+section:nth-child(2) .imogi span::after{
+    display:block;
+    width : 100%;
+    content : '';
+    font-size : .6rem;
+    /*border : 1px solid;*/
+
+    display:flex;
+    justify-content : center;
+    align-items : center;
+}
+section:nth-child(2) .imogi .one  span::after{   content : '좋아요';}
+section:nth-child(2) .imogi .two span::after{   content : '재밌어요';}
+section:nth-child(2) .imogi .three span::after{   content : '도움돼요';}
+section:nth-child(2) .imogi .four span::after{   content : '힘내요';}
+
+section:nth-child(2) .imogi>div>div{
+    margin-top : 2px;
+    font-size : .7rem;
+}
+
+/* 댓글 작성 */
+
+section.reply{
+}
+
+section.reply label{
+    font-size : .8rem;
+    margin-bottom : 3px;
+}
+
+section.reply .control-block{
+    display:flex;
+    justify-content : space-between;
+
+
+}
+
+section.reply .control-block .reply-button{
+    width : 120px;
+    height : 100%;
+    margin-top : 5px;
+}
+
+.filter{
+
+}
+
+.reply{
+    color : black;
+    margin :10px auto;
+}
+.reply .content {
+    margin :15px auto;
+    font-size : .9rem;
+}
+.reply .foot a{
+    font-size : .9rem;
+}
+.reply .foot .material-symbols-outlined{
+
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 300,
+  'GRAD' 0,
+  'opsz' 24;
+  font-size : 1rem;
+
+  margin-right : 10px;
+
+}
+.reply .item{
+
+}
+
+.reply .foot{
+    display:flex;
+    justify-content : space-between;
+    align-items: center;
+    color : gray;
+}
+
+.reply .foot>div{
+    display:flex;
+    justify-content : left;
+    align-items : center;
+    font-size : .8rem;
+}
+.reply .foot a{
+
+    width : 100px;
+    display:flex;
+    justify-content : left;
+    align-items : center;
+    font-size : .8rem;
+    color : gray;
+}
+.reply .foot a:hover{
+    color : royalblue;
+}

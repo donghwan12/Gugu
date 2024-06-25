@@ -1,0 +1,8 @@
+.main-block{
+    width : 400px;
+    margin : 50px auto;
+}
+.hidden{
+    display:none !important;
+
+}

@@ -1,0 +1,79 @@
+/* list.css */
+
+/* Basic styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+main {
+    padding: 20px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.wrap_body {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.tabList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tabList li {
+    display: inline;
+    margin-right: 10px;
+}
+
+.search_area {
+    margin-top: 20px;
+}
+
+.notice_list {
+    margin-top: 20px;
+}
+
+.notice_list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.notice_list th, .notice_list td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.notice_list th {
+    background-color: #f2f2f2;
+}
+.title{
+    width:80%;
+}
+.inTab{
+    padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 10px;
+       background-color: #007bff;
+           color: #fff;
+}

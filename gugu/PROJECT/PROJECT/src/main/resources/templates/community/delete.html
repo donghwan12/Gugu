@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--  link   -->
+    <th:block th:insert="~{fragments/link :: linkFragment}" />
+
+    <link rel="stylesheet" href="/css/community/delete.css">
+
+    <script src="/js/community/delete.js" defer></script>
+
+
+</head>
+<body>
+
+<div class="wrapper">
+    <header>
+        <!-- header   -->
+        <th:block th:insert="~{fragments/top_header :: topHeaderFragment}" />
+        <!-- nav       -->
+        <th:block th:insert="~{fragments/nav :: navFragment}" />
+
+    </header>
+    <main>
+        <section class="layout-150">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">홈</a></li>
+                    <li class="breadcrumb-item"><a href="#">커뮤니티</a></li>
+                    <li class="breadcrumb-item"><a href="#">게시글 읽기</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">게시글 삭제</li>
+                </ol>
+            </nav>
+        </section>
+
+        <section class="delete-block">
+            <h3>게시글 삭제</h3>
+            <form name="deleteForm" action="/community/delete" method="post" onsubmit="return false">
+                <input type="hidden" name="pageNo" th:value="${pageNo}" />
+                <input type="hidden" name="no" th:value="${no}" />
+                <div>
+                    <label>PASSWORD : </label>
+                    <input type="password" name="password" placeholder="패스워드를 입력하세요" class="form-control">
+                </div>
+                <div>
+                    <a href="javascript:void(0)" class="btn btn-primary req_delete_btn">삭제 요청</a>
+                </div>
+
+            </form>
+        </section>  
+    </main>
+
+    <!-- footer       -->
+    <th:block th:insert="~{fragments/footer :: footerFragment}" />
+</div>
+</body>
+</html>

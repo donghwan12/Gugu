@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--  link   -->
+    <th:block th:insert="~{fragments/link :: linkFragment}" />
+
+
+    <link rel="stylesheet" href="/css/community/list.css">
+
+    <script src="/js/community/list.js" defer></script>
+
+</head>
+<body>
+
+<div class="wrapper">
+    <header>
+        <!-- header   -->
+        <th:block th:insert="~{fragments/top_header :: topHeaderFragment}" />
+        <!-- nav       -->
+        <th:block th:insert="~{fragments/nav :: navFragment}" />
+
+    </header>
+    <main>
+        <section class="layout-150">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">홈</a></li>
+                    <li class="breadcrumb-item"><a href="#">커뮤니티</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">게시글 리스트</li>
+                </ol>
+            </nav>
+        </section>
+
+        <section class="community-block layout-150 w-100">
+            <!--
+             SEARCH
+            -->
+            <div class="search-block" >
+                <form class="d-flex" action="/community/list" name="keywordSearch">
+                    <input type="hidden" name="pageNo" th:value="${pageNo}" />
+                    <select name="category" id="" class="form-select me-2" style="width;150px;">
+                        <option value="신입" selected>신입</option>
+                        <option value="취준">취준</option>
+                        <option value="채용공고">채용공고</option>
+                        <option value="자소서">자소서</option>
+                        <option value="면접">면접</option>
+                        <option value="QnA">QnA</option>
+                        <option value="커리어">커리어</option>
+                        <option value="이직">이직</option>
+                        <option value="퇴사">퇴사</option>
+                        <option value="잡담">잡담</option>
+                    </select>
+                    <select name="type" id="type" class="form-select me-2" style="width;150px;">
+                        <option value="title" selected>제목</option>
+                        <option value="username" selected>작성자</option>
+                        <option value="content" selected>내용</option>
+                    </select>
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width:150px;" name="keyword">
+                    <button class="btn  btn-success btn-outline-light" type="submit">Search</button>
+                </form>
+            </div>
+
+
+            <!-- contents -->
+            <div class="col ">
+                <!-- title -->
+                <div class="title">
+                    <h3>전체 커뮤니티</h3>
+                    <div>총 : <span th:text="${total}"></span> 건</div>
+                </div>
+
+                <div class="contents-block">
+                    <div class="board-header">
+                        Page No (<span th:text="${pageNo}"></span> / <span th:text="${pageDto.totalpage}"></span> Page)
+                    </div>
+                    <div class="board-body">
+                        <!-- body -->
+                        <table class="table w-100">
+                            <thead>
+                            <tr>
+                                <th scope="col-1">번호</th>
+                                <th scope="col-2">제목</th>
+                                <th scope="col-2">작성자</th>
+                                <th scope="col-2">등록날짜</th>
+                                <th scope="col-1">조회수</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <!-- BOARD LIST ITEMS -->
+                                <th:block >
+                                    <tr th:each="communityDto : ${list}">
+                                        <td th:text="${communityDto.no}"></td>
+                                        <td><a th:href="@{/community/read(no=${communityDto.no},pageNo=${pageNo})}"  th:text="${communityDto.title}">  </a> </td>
+                                        <td th:text="${communityDto.username}"></td>
+                                        <td th:text="${#temporals.format(communityDto.regdate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                                        <td th:text="${communityDto.count}"></td>
+                                    </tr>
+                                </th:block>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    <div class="board-footer row position-relative " >
+
+                        <!--  -->
+                        <div class="pagenation col-9">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination">
+
+
+                                    <!-- PREV -->
+                                    <li class="page-item" th:if="${pageDto.prev}">
+                                        <a class="page-link" th:href="@{/community/list(pageNo=${pageDto.nowBlock * pageDto.pagePerBlock - pageDto.pagePerBlock*2 + 1} )}" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+
+
+                                    <!-- PAGENATION -->
+                                    <li class="page-item" th:each="i : ${#numbers.sequence(pageDto.startPage, pageDto.endPage)}"  >
+                                        <a class="page-link" th:href="@{/community/list(pageNo=${i})}" > <span th:text="${i}"></span> </a>
+                                    </li>
+
+
+
+                                    <!-- NEXT -->
+                                    <li class="page-item"  th:if="${pageDto.next}">
+
+                                        <a class="page-link" th:href="@{/community/list(pageNo=${pageDto.nowBlock*pageDto.pagePerBlock+1} )}" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+
+                                    </li>
+
+
+
+                                </ul>
+                            </nav>
+                        </div>
+                        <!--  -->
+                        <div class="button--group col-2">
+                            <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                <a type="button" class="btn btn-outline-primary m-2" style="width:100px;"  href="/community/add">글쓰기</a>
+                                <button type="button" class="btn btn-outline-primary m-2" style="width:100px;">처음으로</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </section>
+    </main>
+
+    <!-- footer       -->
+    <th:block th:insert="~{fragments/footer :: footerFragment}" />
+</div>
+</body>
+</html>

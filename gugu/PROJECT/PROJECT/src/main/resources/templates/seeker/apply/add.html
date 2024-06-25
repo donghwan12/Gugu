@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--Link-->
+    <th:block th:insert="~{fragments/link :: linkFragment}" />
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/apply/add.css"/>
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <!-- header -->
+        <th:block th:insert="~{fragments/top_header :: topHeaderFragment}" />
+        <!-- nav -->
+        <th:block th:insert="~{fragments/nav :: navFragment}" />
+    </header>
+    <h3>입사지원서 작성</h3>
+    <div class="form-body">
+        <form class="apply-form" th:action="@{/apply/add}" th:object="${applyDto}" method="post">
+
+            <input type="hidden" id="id" th:field="*{id}"/><br>
+            <label for="name">이름:</label>
+            <input type="text" id="name" th:field="*{name}" /><br/>
+
+            <label for="tell">연락처:</label>
+            <input type="text" id="tell" th:field="*{tell}" /><br/>
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" th:field="*{email}" /><br/>
+
+            <label for="addr">주소:</label>
+            <input type="text" id="addr" th:field="*{addr}" /><br/>
+
+            <label for="nationality">국적:</label>
+            <input type="text" id="nationality" th:field="*{nationality}" /><br/>
+
+            <label for="birthDate">생년월일:</label>
+            <input type="text" id="birthDate" th:field="*{birthDate}" /><br/>
+
+            <label for="expectedSalary">희망연봉:</label>
+            <input type="text" id="expectedSalary" th:field="*{expectedSalary}" /><br/>
+
+            <label for="militaryService">병역사항:</label>
+            <input type="text" id="militaryService" th:field="*{militaryService}" /><br/>
+
+            <label for="objective">지원부문:</label>
+            <input type="text" id="objective" th:field="*{objective}" /><br/>
+
+            <label for="resume">이력서선택:</label>
+            <input type="text" id="resume" th:field="*{resume.id}" /><br/>
+
+            <button type="submit">지원서제출</button>
+        </form>
+    </div>
+    <footer>
+        <!-- footer -->
+        <th:block th:insert="~{fragments/footer :: footerFragment}" />
+    </footer>
+</div>
+</body>
+</html>
