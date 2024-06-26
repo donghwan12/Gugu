@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<th:block th:fragment="topHeaderFragment">
+
+
+
+    <div class="top-header layout-150">
+        <div class="left"></div>
+        <div class="right">
+            <ul class=menu>
+
+                <!-- 인증이후 -->
+                <th:block sec:authorize="isAuthenticated()">
+                    <li class=username><a href=""><span sec:authentication="principal.username"></span></a></li>
+                    <li><a href="/user/myinfo">나의정보</a></li>
+                    <li><a href="/logout">로그아웃</a></li>
+                </th:block>
+
+                <!-- 인증이전 -->
+                <th:block sec:authorize="isAnonymous()">
+                    <li><a href="/login">로그인</a></li>
+                    <li><a href="/user/join">회원가입</a></li>
+                </th:block>
+
+                <!-- 공통 -->
+                <li><a href="javascript:void(0)">고객센터</a></li>
+                <li><a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">전체메뉴</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">전체 메뉴</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="height:600px;">
+                    <!-- ONE BLOCK                    -->
+                    <div>
+                        <!--                       -->
+                        <div>
+                           <h4>1Layer - TITLE</h4>
+                           <hr>
+                           <div>
+                               <ul>
+                                   <li><a href="">기능</a></li>
+                                   <li><a href="">기능</a></li>
+                                   <li><a href="">기능</a></li>
+                                   <li><a href="">기능</a></li>
+                               </ul>
+                           </div>
+                       </div>
+                        <!--                       -->
+                        <div>
+                            <h4>1Layer - TITLE</h4>
+                            <hr>
+                            <div>
+                                <ul>
+                                    <li><a href="">기능</a></li>
+                                    <li><a href="">기능</a></li>
+                                    <li><a href="">기능</a></li>
+                                    <li><a href="">기능</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--                       -->
+                        <div>
+                            <h4>1Layer - TITLE</h4>
+                            <hr>
+                            <div>
+                                <ul>
+                                    <li><a href="">기능</a></li>
+                                    <li><a href="">기능</a></li>
+                                    <li><a href="">기능</a></li>
+                                    <li><a href="">기능</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--                       -->
+                        <div>
+                            <h4>1Layer - TITLE</h4>
+                            <hr>
+                            <div>
+                                <ul>
+                                    <li><a href="">기능</a></li>
+                                    <li><a href="">기능</a></li>
+                                    <li><a href="">기능</a></li>
+                                    <li><a href="">기능</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--                                        -->
+                    <div>
+                        <!--                       -->
+                        <div>
+                            <h4>2Layer - TITLE</h4>
+                            <hr>
+                            <div>
+                                <ul>
+                                    <li><a href="">기능</a></li>
+                                    <li><a href="">기능</a></li>
+                                    <li><a href="">기능</a></li>
+                                    <li><a href="">기능</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--                       -->
+                        <div>
+                            <h4>2Layer - TITLE</h4>
+                            <hr>
+                            <div>
+                                <ul>
+                                    <li><a href="">기능</a></li>
+                                    <li><a href="">기능</a></li>
+                                    <li><a href="">기능</a></li>
+                                    <li><a href="">기능</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--                       -->
+                        <div>
+                            <h4>2Layer - TITLE</h4>
+                            <hr>
+                            <div>
+                                <ul>
+                                    <li><a href="">기능</a></li>
+                                    <li><a href="">기능</a></li>
+                                    <li><a href="">기능</a></li>
+                                    <li><a href="">기능</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--                       -->
+                        <div>
+                            <h4>2Layer - TITLE</h4>
+                            <hr>
+                            <div>
+                                <ul>
+                                    <li><a href="">기능</a></li>
+                                    <li><a href="">기능</a></li>
+                                    <li><a href="">기능</a></li>
+                                    <li><a href="">기능</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</th:block>
+
+
+
+</body>
+</html>

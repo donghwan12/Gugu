@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Company Information</title>
+
+    <!-- Link -->
+    <th:block th:insert="~{fragments/link :: linkFragment}"/>
+    <style>
+        .add {
+            width: 600px;
+            padding: 20px;
+            border: 1px solid pink;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #fff;
+            font-size: 16px;
+        }
+        .add h1 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #ff69b4;
+        }
+        .add p {
+            margin: 10px 0;
+            line-height: 1.5;
+        }
+        .add strong {
+            font-weight: bold;
+            color: #333;
+        }
+        .company-explanation {
+            word-wrap: break-word; /* Allows long words to break and wrap to the next line */
+            white-space: pre-wrap; /* Preserves whitespace and allows wrapping */
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: hotpink;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #ff85c0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <header>
+        <!-- Header -->
+        <th:block th:insert="~{fragments/top_header :: topHeaderFragment}"/>
+        <!-- Nav -->
+        <th:block th:insert="~{fragments/nav :: navFragment}"/>
+    </header>
+    <main>
+        <section>
+            <div class="add">
+                <h1>회사정보 조회</h1>
+                <p><strong>회사 이름 :</strong> <span th:text="${companyName}"></span></p>
+                <p><strong>회사 주소 :</strong> <span th:text="${companyaddr1}"></span></p>
+                <p><strong>상세 주소 :</strong> <span th:text="${companyaddr2}"></span></p>
+                <p><strong>사업자 번호 :</strong> <span th:text="${companyNumber}"></span></p>
+                <p><strong>우편번호 :</strong> <span th:text="${zipcode}"></span></p>
+                <p><strong>회사 이메일 :</strong> <span th:text="${companyEmail}"></span></p>
+                <p><strong>회사 전화번호 : </strong> <span th:text="${companyPhone}"></span></p>
+                <p><strong>업종 : </strong> <span th:text="${companyIndustry}"></span></p>
+                <p><strong>회사 설명 : </strong><span th:text="${companyexplanation}" class="company-explanation"></span></p>
+                <button>수정</button>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <th:block th:insert="~{fragments/footer :: footerFragment}"/>
+</div>
+</body>
+</html>

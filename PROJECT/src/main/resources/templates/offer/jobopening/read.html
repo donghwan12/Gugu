@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Company Information</title>
+
+    <!-- Link -->
+    <th:block th:insert="~{fragments/link :: linkFragment}"/>
+    <style>
+        .add {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid pink;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            font-size: 16px;
+        }
+        h1 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-align: center;
+            color: hotpink;
+            font-size: 24px;
+        }
+        .add p, .add div {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+        .add strong {
+            font-weight: bold;
+            color: hotpink;
+        }
+        .company-explanation {
+            word-wrap: break-word;
+            white-space: pre-wrap;
+        }
+        .inline {
+            display: inline;
+        }
+        .line2 {
+            margin-left: 40px;
+        }
+        .line {
+            margin-right: 40px;
+        }
+        .read2 {
+            width: 100%;
+            max-width: 750px;
+            border: 1px solid pink;
+            border-radius: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            margin: 20px auto;
+        }
+        .age {
+            width: 100%;
+            max-width: 750px;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .tbl, .tbl2, .tbl3 {
+            width: 100%;
+            max-width: 750px;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        .tbl th, .tbl td, .tbl2 th, .tbl2 td, .tbl3 th, .tbl3 td {
+            border: 1px solid pink;
+            padding: 8px;
+            text-align: center;
+        }
+        .tbl th {
+            background-color: hotpink;
+            color: white;
+        }
+        .tbl2 th, .tbl3 th {
+            background-color: hotpink;
+            color: white;
+        }
+        .ddd {
+            width: 100%;
+            max-width: 750px;
+            border: 1px solid pink;
+            border-radius: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <header>
+        <!-- Header -->
+        <th:block th:insert="~{fragments/top_header :: topHeaderFragment}"/>
+        <!-- Nav -->
+        <th:block th:insert="~{fragments/nav :: navFragment}"/>
+    </header>
+    <main>
+        <section>
+            <div class="add">
+                <h1>채용공고 조회</h1><br>
+                <hr>
+                <p>
+                    <strong >경력 :</strong> <span th:text="${career}" class="inline line" ></span>
+                    &nbsp;&nbsp;
+                    <strong class="line2">급여 :</strong> <span th:text="${money}" class="inline"></span>
+                </p>
+                <p>
+                    <strong >학력 :</strong> <span th:text="${ability}" class="inline line"></span>
+                    &nbsp;&nbsp;
+                    <strong class="line2">근무지역 :</strong> <span th:text="${jobzone}" class="inline"></span>
+                </p>
+                <p>
+                    <strong >근무형태 :</strong> <span th:text="${jobwork}" class="inline line"></span>
+                    &nbsp;&nbsp;
+                    <strong class="line2">우대사항 :</strong> <span th:text="${jobspecial}" class="inline"></span>
+                </p>
+                <hr>
+                <br>
+                <div class="read2">
+                    <img src="https://i.namu.wiki/i/TF_AvGed0ytICedzqY5zwZANLfzvkgIVzFrGNCmi2CGw92c0793fvqaUi3bhVWuX6QlS9Sau6f-PIS2MeiPRZQ.webp" alt="진격의거인" class="age">
+                    <br>
+                    <br>
+                    <h2>모집 부분 및 자격 조건</h2>
+                    <table class="tbl">
+                        <tr>
+                            <th>Header 1</th>
+                            <th>Header 2</th>
+                            <th>Header 3</th>
+                            <th>Header 4</th>
+                        </tr>
+                        <tr>
+                            <td>Row 1, Cell 1</td>
+                            <td>Row 1, Cell 2</td>
+                            <td>Row 1, Cell 3</td>
+                            <td>Row 1, Cell 4</td>
+                        </tr>
+                        <tr>
+                            <td>Row 2, Cell 1</td>
+                            <td>Row 2, Cell 2</td>
+                            <td>Row 2, Cell 3</td>
+                            <td>Row 2, Cell 4</td>
+                        </tr>
+                        <tr>
+                            <td>Row 3, Cell 1</td>
+                            <td>Row 3, Cell 2</td>
+                            <td>Row 3, Cell 3</td>
+                            <td>Row 3, Cell 4</td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <h2>근무조건</h2>
+                    <p><strong>1</strong> <span ></span></p>
+                    <p><strong>2</strong> <span></span></p>
+                    <p><strong>3</strong> <span ></span></p>
+                    <p><strong>4 </strong> <span></span></p>
+                    <p><strong>5</strong> <span></span></p>
+                    <p><strong>6</strong><span></span></p>
+                </div>
+
+                <br>
+                <br>
+                <h2>복리후생</h2>
+                <table class="tbl2">
+                    <tr>
+                        <td>사대보험</td>
+                        <td>연차</td>
+                        <td>퇴직금</td>
+                        <td>성과급</td>
+                    </tr>
+                    <tr>
+                        <td>장기 근속자</td>
+                        <td>기숙사 운영</td>
+                        <td>7</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>10</td>
+                        <td>11</td>
+                        <td>12</td>
+                    </tr>
+                </table>
+                <br><br>
+                <h2>면접방법</h2>
+                <table class="tbl3">
+                    <tr>
+                        <td>서류진형</td>
+                        <td>면접</td>
+                        <td>채용검진</td>
+                        <td>최종합격</td>
+                    </tr>
+                </table>
+                <br><br>
+                <h2>접수기간및 접수방법</h2>
+                <div class="ddd">
+                    <strong >접수기간 :</strong> <span  class="inline line">2024년6월15일 ~ 7월15일</span><br>
+                    <strong >접수방법 :</strong> <span  class="inline line">입사지원</span><br>
+                    <strong >제출서류 :</strong> <span th:text="${jobpapers}" class="inline line"></span>
+                </div>
+
+                <br><br>
+                <h2>기업정보</h2>
+                <p><strong>회사 이름:</strong> <span th:text="${companyName}"></span>
+                <strong>회사 주소:</strong> <span th:text="${companyaddr}"></span>
+                <strong>회사 이메일:</strong> <span th:text="${companyEmail}"></span></p>
+                <p><strong>회사 전화번호: </strong> <span th:text="${companyPhone}"></span>
+                <strong>업종: </strong> <span th:text="${companyIndustry}"></span>
+                <strong>회사 설명: </strong><span th:text="${companyexplanation}" class="company-explanation"></span></p>
+
+
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <th:block th:insert="~{fragments/footer :: footerFragment}"/>
+</div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--  link   -->
+    <th:block th:insert="~{fragments/link :: linkFragment}" />
+
+    <style>
+        .add {
+          width: 1000px;
+          height: 1000px;
+          border: 1px solid pink;
+          text-align: center;
+          position: relative;
+          left: 500px;
+          top: 0px;
+        }
+      h1 {
+        margin-top : 20px;
+        margin-bottom : 20px;
+      }
+      .for > input {
+        margin-bottom: 10px;
+      }
+
+
+
+    </style>
+
+</head>
+<body>
+
+<div class="wrapper">
+    <header>
+        <!-- header   -->
+        <th:block th:insert="~{fragments/top_header :: topHeaderFragment}" />
+        <!-- nav       -->
+        <th:block th:insert="~{fragments/nav :: navFragment}" />
+
+    </header>
+    <main>
+        <section>
+
+            <div class="add">
+                <h1>채용공고 수정</h1>
+                <form action="/offer/jobopening/update" method="post" class="for" enc="multipart-formdata">
+
+                    <label for="id">Id :</label>
+                    <input type="text" id="id" name="id" required><br>
+
+                    <label for="title">제목 :</label>
+                    <input type="text" id="title" name="title" required><br>
+
+                    <label for="career">경력 :</label>
+                       <input type="text" id="career" name="career" required><br>
+
+                    <label for="ability">학력 :</label>
+                    <input type="text" id="ability" name="ability" required><br>
+
+                    <label for="jobwork">근무형태 :</label>
+                    <input type="tel" id="jobwork" name="jobwork" required><br>
+
+                    <label for="money">급여 :</label>
+                    <input type="text" id="money" name="money" required><br>
+
+                    <label for="jobzone">근무지역 :</label>
+                    <input type="text" id="jobzone" name="jobzone" required><br>
+
+                    <label for="welfare">복리후생 :</label>
+                    <input type="text" id="welfare" name="welfare" required><br>
+
+                    <label for="jobplace">근무지위치 :</label>
+                    <input type="text" id="jobplace" name="jobplace" required><br>
+
+                    <label for="time">접수기간 :</label>
+                        <input type="datetime" id="time" name="time" required><br>
+
+                    <label for="jobway">접수방법 :</label>
+                    <input type="text" id="jobway" name="jobway" required><br>
+
+                    <label for="files">이미지 :</label>
+                    <input type="file" id="files" name="files" required multiple><br>
+
+                    <button type="submit">등록</button>
+                </form>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- footer       -->
+    <th:block th:insert="~{fragments/footer :: footerFragment}" />
+</div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--  link   -->
+    <th:block th:insert="~{fragments/link :: linkFragment}" />
+
+    <link rel="stylesheet" href="/css/user/confirm_id.css">
+
+    <script src="/js/user/confirm_id.js" defer></script>
+
+</head>
+<body>
+
+<div class="wrapper">
+    <header>
+        <!-- header   -->
+        <th:block th:insert="~{fragments/top_header :: topHeaderFragment}" />
+        <!-- nav       -->
+        <th:block th:insert="~{fragments/nav :: navFragment}" />
+
+    </header>
+    <main>
+        <section class="breadcrum-block layout-150">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">HOME</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">LOGIN</li>
+                </ol>
+            </nav>
+        </section>
+        <section>
+
+        </section>
+        <section>
+            <div class="main-block">
+                <!--
+                <aside class=left>
+                </aside>
+                -->
+                <div class=right>
+
+                    <div class="m-2"  style="font-size:.8rem;box-sizing:5px 5px 5px gray;">
+                        <a href="javascript:void(0)" class="seeker_confirm_id">일반 회원</a> |
+                        <a href="javascript:void(0)" class="offer_confirm_id">기업 회원</a>
+                    </div>
+
+                    <form action="/seeker/confirm_id" method="post" name="seekerConfirmId" class="" onsubmit="return false">
+                        <div class="m-2 mb-4">
+                            <h3>회원 아이디찾기</h3>
+                        </div>
+
+                        <div class="mb-2">
+                            <label for="">회원 이름 : </label>
+                            <input type="text"  name="username" class="form-control w-100" />
+                        </div>
+                        <div class="mb-2">
+                            <label for="">회원 연락처 : </label>
+                            <input type="text" name="tel"  class="form-control w-100" placeholder="-없이 입력" />
+                        </div>
+                        <div>
+                            <a href="javascript:void(0)"class="btn btn-success mb-2 w-100 seeker_id_btn">아이디 찾기</a>
+                        </div>
+                        <div>
+                            <a href="javascript:void(0)"class="btn btn-success mb-2 w-100">이전으로</a>
+                        </div>
+                    </form>
+
+
+                    <form action="/offer/confirm_id" method="post" name="offerConfirmId" class="hidden" onsubmit="return false">
+                        <div class="m-2 mb-4">
+                            <h3>기업 아이디찾기</h3>
+                        </div>
+                        <div class="mb-2">
+                            <label for="">사업자 번호 : </label>
+                            <input type="password"  name="companyNumber" class="form-control w-100" />
+                        </div>
+                        <div class="mb-2">
+                            <label for="">기업 이메일 : </label>
+                            <input type="text" name="companyEmail"  class="form-control w-100" />
+                        </div>
+                        <div>
+                            <a href="javascript:void(0)"class="btn btn-success mb-2 w-100 offer_id_btn">아이디 찾기</a>
+                        </div>
+                        <div>
+                            <a href="javascript:void(0)"class="btn btn-success mb-2 w-100">이전으로</a>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- footer       -->
+    <th:block th:insert="~{fragments/footer :: footerFragment}" />
+</div>
+</body>
+</html>

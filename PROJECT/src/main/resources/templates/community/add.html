@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--  link   -->
+    <th:block th:insert="~{fragments/link :: linkFragment}" />
+
+
+    <link rel="stylesheet" href="/css/community/add.css">
+
+    <script src="/js/community/add.js" defer></script>
+
+
+</head>
+<body>
+
+<div class="wrapper">
+    <header>
+        <!-- header   -->
+        <th:block th:insert="~{fragments/top_header :: topHeaderFragment}" />
+        <!-- nav       -->
+        <th:block th:insert="~{fragments/nav :: navFragment}" />
+
+    </header>
+    <main>
+        <section class="layout-150">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">홈</a></li>
+                    <li class="breadcrumb-item"><a href="#">커뮤니티</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">게시글 추가</li>
+                </ol>
+            </nav>
+        </section>
+
+        <section class="layout-150 board-body">
+            <div class="head">
+                <div class="title">게시글 등록하기</div>
+                <form action="/community/add" method="post" enctype="multipart/form-data">
+                <div>
+                    <select name="category" id="" class="form-select">
+                        <option value="신입" selected>신입</option>
+                        <option value="취준">취준</option>
+                        <option value="채용공고">채용공고</option>
+                        <option value="자소서">자소서</option>
+                        <option value="면접">면접</option>
+                        <option value="QnA">QnA</option>
+                        <option value="커리어">커리어</option>
+                        <option value="이직">이직</option>
+                        <option value="퇴사">퇴사</option>
+                        <option value="잡담">잡담</option>
+                    </select>
+                </div>
+            </div>
+
+                <div class="mb-3 w-50">
+                    <label for="ex2" class="form-label">TITLE :</label>&nbsp;&nbsp;<span class="msg" th:text="${title}"></span>
+                    <input type="text" class="form-control" id="ex2" placeholder="Title" name="title">
+                </div>
+                <div class="mb-3 w-50">
+                    <label for="exampleFormControlInput1" class="form-label">EMAIL ADDRESS : </label>&nbsp;&nbsp;<span class="msg" th:text="${username}"></span>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="username"  >
+                </div>
+                <div class="mb-3 w-50">
+                    <label for="exampleFormControlTextarea1" class="form-label">CONTENT : </label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content"></textarea>
+                </div>
+                <div class="mb-3  w-50">
+                    <label for="formFile" class="form-label">ADD IMAGES :</label>
+                    <input class="form-control" type="file" id="formFile" name="files" >
+                </div>
+                <div class="mb-3  w-50" >
+                    <button    class="btn btn-primary m-1">글쓰기</button>
+                    <a href="javascript:history.go(-1)"   class="btn btn-primary m-1">이전으로</a>
+                </div>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- footer       -->
+    <th:block th:insert="~{fragments/footer :: footerFragment}" />
+</div>
+</body>
+</html>

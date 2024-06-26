@@ -1,0 +1,99 @@
+/* 기본적인 레이아웃 설정 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+main {
+    padding: 20px;
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+}
+
+.wrap_body {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.wrap_board {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.notification_detail {
+    margin-bottom: 20px;
+}
+
+.notification_detail p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.notification_detail p strong {
+    display: inline-block;
+    width: 100px;
+    font-weight: bold;
+}
+
+.notification_detail div {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    height:400px;
+}
+.buttons{
+    display:flex;
+    margin-top:20px;
+    padding:20px;
+    justify-content:center;
+}
+.go_List{
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: gray;
+    text-decoration: none;
+    color:  #fff;
+     margin:10px;
+}
+.delete_button {
+    display: inline-block;
+    border: none;
+    border-radius: 5px;
+    margin:10px;
+    cursor: pointer;
+    background-color: gray;
+    color: #fff;
+    text-decoration: none;
+}
+.go_update{
+display: inline-block;
+     margin:10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color:gray;
+    text-decoration: none;
+    color: #fff;
+}

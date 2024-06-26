@@ -1,0 +1,17 @@
+.delete-block{
+    width : 500px;
+    margin : 100px; auto;
+    padding : 20px;
+    display:flex;
+    justify-content : center;
+    align-items : center;
+    flex-direction:column;
+
+}
+.delete-block form{
+    width : 100%;
+}
+
+.delete-block form>*{
+    margin : 5px;
+}

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--  link   -->
+    <th:block th:insert="~{fragments/link :: linkFragment}" />
+
+    <!-- /css/community/index.css   -->
+    <link rel="stylesheet" href="/css/community/index.css">
+
+
+    <!-- /js/community/index.js    -->
+    <script src="/js/community/index.js" defer></script>
+</head>
+<body>
+
+<div class="wrapper">
+    <header>
+        <!-- header   -->
+        <th:block th:insert="~{fragments/top_header :: topHeaderFragment}" />
+        <!-- nav       -->
+        <th:block th:insert="~{fragments/nav :: navFragment}" />
+
+    </header>
+    <main>
+
+        <section class="layout-150">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">홈</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">커뮤니티</li>
+                </ol>
+            </nav>
+        </section>
+        <section class="banner layout-150">
+            <div class="items">
+                <div>광고</div>
+                <div>광고</div>
+                <div>광고</div>
+            </div>
+        </section>
+        <section class="main layout-150">
+            <div class="left">
+                <!-- 실시간 전체글 보기               -->
+                <div class="realtime">
+                    <div class="head">
+                        <h2>실시간 전체글  : 500,000 개</h2>
+                        <div>
+                            <form action="/community/search" method="get">
+                                <input type="text" class="keyword form-control"  style="width:400px;" placeholder="KEYWORD 를 입력하세요" />
+                            </form>
+
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div class="title">
+                            <div class="left">
+                                HOT 이번주 전체 인기글 🔺
+                            </div>
+                            <div class="right"><a href="">더보기</a> </div>
+                        </div>
+                        <div class="items">
+                            <ul>
+                                <li>제목제목</li>
+                                <li>
+                                    <span class="material-symbols-outlined me-2">chat_bubble</span>
+                                    <span class="material-symbols-outlined">visibility</span>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>제목제목</li>
+                                <li>
+                                    <span class="material-symbols-outlined me-2">chat_bubble</span>
+                                    <span class="material-symbols-outlined">visibility</span>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>제목제목</li>
+                                <li>
+                                    <span class="material-symbols-outlined me-2">chat_bubble</span>
+                                    <span class="material-symbols-outlined">visibility</span>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>제목제목</li>
+                                <li>
+                                    <span class="material-symbols-outlined me-2">chat_bubble</span>
+                                    <span class="material-symbols-outlined">visibility</span>
+                                </li>
+                            </ul>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+            <!--   주제별 커뮤니티             -->
+                <div class="category">
+                    <div class="head">
+                        <div class="left">
+                            <h2>주제별 커뮤니티</h2>
+                        </div>
+                        <div class="right"><a href="">더보기</a> </div>
+                    </div>
+                    <div class="body">
+                        <!-- Slider main container -->
+                        <div class="swiper centers">
+                            <!-- Additional required wrapper -->
+                            <div class="swiper-wrapper">
+                                <!-- Slides -->
+                                <div class="swiper-slide">  <a href="javascript:void(0)">전체글</a>   </div>
+                                <div class="swiper-slide">  <a href="javascript:void(0)">신입 </a>   </div>
+                                <div class="swiper-slide">  <a href="javascript:void(0)">취준 </a>   </div>
+                                <div class="swiper-slide">  <a href="javascript:void(0)">채용공고</a>   </div>
+                                <div class="swiper-slide">  <a href="javascript:void(0)">자소서 </a>   </div>
+                                <div class="swiper-slide">  <a href="javascript:void(0)">면접 </a>   </div>
+                                <div class="swiper-slide">  <a href="javascript:void(0)">QnA </a>   </div>
+                                <div class="swiper-slide">  <a href="javascript:void(0)">커리어 </a>   </div>
+                                <div class="swiper-slide">  <a href="javascript:void(0)">이직 </a>   </div>
+                                <div class="swiper-slide">  <a href="javascript:void(0)">퇴사 </a>   </div>
+                            </div>
+                            <!-- If we need pagination -->
+                            <!--
+                            <div class="swiper-pagination"> </div>
+                             -->
+                            <!-- If we need navigation buttons -->
+                            <div class="swiper-button-prev">
+                                <span class="material-symbols-outlined">arrow_left</span>
+                            </div>
+                            <div class="swiper-button-next">
+                                <span class="material-symbols-outlined">arrow_right</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="boards">
+                        <div>
+                            <h3>전체글</h3>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div>
+                            <h3>신입</h3>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div>
+                            <h3>취준</h3>
+                            <div></div>
+                            <div></div>
+                        </div>
+
+                        <div>
+                            <h3>채용공고</h3>
+                            <div></div>
+                            <div></div>
+                        </div>
+
+                        <div>
+                            <h3>자소서</h3>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div>
+                            <h3>면접</h3>
+                            <div></div>
+                            <div></div>
+                        </div>
+
+                        <div>
+                            <h3>QnA</h3>
+                            <div></div>
+                            <div></div>
+                        </div>
+
+                        <div>
+                            <h3>커리어</h3>
+                            <div></div>
+                            <div></div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <!-- right     -->
+            <div class="right">
+                <div class="myinfo">
+                    <div>
+                        <img src="" alt="">
+                    </div>
+                    <div>
+                        <span>홍길동</span> 님
+                    </div>
+                    <div>
+                        <span>작성글</span> <span>0</span> |
+                        <span>댓글</span> <span>0</span>
+                    </div>
+                </div>
+                <div class="board_add_block">
+                    <a href="/community/add" class="btn btn-primary board_btn mb-1">게시글 작성</a> <br>
+                    <a href="/community/list" class="btn btn-primary board_btn">전체게시글 확인</a>
+                </div>
+
+            </div>
+
+            <div class=""></div>
+
+            <div class=""></div>
+
+
+        </section>
+    </main>
+
+    <!-- footer       -->
+    <th:block th:insert="~{fragments/footer :: footerFragment}" />
+</div>
+</body>
+</html>

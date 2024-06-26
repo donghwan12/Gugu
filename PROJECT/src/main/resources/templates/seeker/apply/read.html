@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>입사지원서 상세정보</title>
+    <th:block th:insert="~{fragments/link :: linkFragment}" />
+    <style>
+        /* 스타일링 */
+        .resume-details {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .resume-details h2 {
+            margin-bottom: 10px;
+        }
+        .resume-details dl {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .resume-details dt {
+            font-weight: bold;
+        }
+        .resume-details dd {
+            margin-left: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <!-- header -->
+        <th:block th:insert="~{fragments/top_header :: topHeaderFragment}" />
+        <!-- nav -->
+        <th:block th:insert="~{fragments/nav :: navFragment}" />
+    </header>
+    <main>
+        <section>
+            <h1>입사지원서 상세정보</h1>
+            <div class="resume-details">
+                <h2>지원회사정보</h2>
+                <dl>
+                    <dt>지원공고이름</dt>
+                    <dd th:text="${apply.recruit.title}"></dd>
+                    <dt>회사근무지:</dt>
+                    <dd th:text="${apply.recruit.jobzone}"></dd>
+                    <dt>근무일수:</dt>
+                    <dd th:text="${apply.recruit.money}"></dd>
+                    <dt>회사복지:</dt>
+                    <dd th:text="${apply.recruit.welfare}"></dd>
+                </dl>
+                <h2>지원자정보</h2>
+                <dl>
+                    <dt>이름</dt>
+                    <dd th:text="${apply.jobSeeker.username}"></dd>
+                    <dt>Email</dt>
+                    <dd th:text="${apply.resume.email}"></dd>
+                    <dt>전화번호</dt>
+                    <dd th:text="${apply.jobSeeker.tel}"></dd>
+                </dl>
+                <h2>기타사항</h2>
+                <dl>
+                    <dt>국적</dt>
+                    <dd th:text="${apply.nationality}"></dd> <!-- apply 객체에서 nationality 필드를 가져옵니다 -->
+                    <dt>희망연봉</dt>
+                    <dd th:text="${apply.expectedSalary}"></dd> <!-- apply 객체에서 expectedSalary 필드를 가져옵니다 -->
+                    <dt>병역유무</dt>
+                    <dd th:text="${apply.militaryService}"></dd> <!-- apply 객체에서 militaryService 필드를 가져옵니다 -->
+                    <dt>지원종목</dt>
+                    <dd th:text="${apply.objective}"></dd> <!-- apply 객체에서 objective 필드를 가져옵니다 -->
+                </dl>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <!-- footer -->
+        <th:block th:insert="~{fragments/footer :: footerFragment}" />
+    </footer>
+</div>
+</body>
+</html>

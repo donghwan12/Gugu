@@ -1,0 +1,36 @@
+aside {
+    height : 600px;
+    width : 450px;
+    margin : 20px;
+
+    display:flex;
+    justify-content : center;
+    align-items : start;
+
+}
+aside ul.menu-01{
+    text-align:center;
+    padding : 5px;
+
+}
+
+aside ul.menu-01>li{
+    border : 1px solid;
+    margin : 5px;
+    padding : 5px;
+}
+aside ul.menu-01>li>a{
+    display:block;
+}
+aside ul.menu-01>li>.menu-02{
+
+}
+aside ul.menu-01>li>.menu-02>li{
+    border : 1px;
+    margin : 5px;
+    padding : 5px;
+    border : 1px solid;
+}
+aside ul.menu-01>li>.menu-02>li>a{
+
+}

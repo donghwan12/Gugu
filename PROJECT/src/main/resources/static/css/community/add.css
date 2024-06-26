@@ -1,0 +1,17 @@
+.board-body{
+
+}
+.board-body>.head{
+    display:flex;
+    justfy-content : space-between;
+    align-items : center;
+
+}
+
+.board-body>.head .title{
+    margin-right : 15px;
+    font-size : 1.5rem;
+}
+.board-body>.head select{
+
+}

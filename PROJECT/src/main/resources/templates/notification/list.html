@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>공지사항</title>
+
+    <!--  link   -->
+    <th:block th:insert="~{fragments/link :: linkFragment}" />
+
+    <link rel="stylesheet" href="/css/notification/list.css"/>
+</head>
+<body>
+
+<div class="wrapper">
+    <header>
+        <!-- header   -->
+        <th:block th:insert="~{fragments/top_header :: topHeaderFragment}" />
+        <!-- nav       -->
+        <th:block th:insert="~{fragments/nav :: navFragment}" />
+    </header>
+    <main>
+        <h2>공지사항</h2>
+        <div class="wrap_body">
+            <div class="wrap_board">
+                <ul class="tabList">
+                    <li><button type="button" class="inTab"><span>전체</span></button></li>
+                </ul>
+                <div class="search_area"></div>
+                <div class="notice_list">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>공지</th>
+                            <th class="title">제목</th>
+                            <th>작성일</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="notification : ${notifications}">
+                            <td th:text="${notification.id}"></td>
+                            <td>
+                                <a th:href="@{/notification/read/{id}(id=${notification.id})}" th:text="${notification.title}"></a>
+                            </td>
+                            <td th:text="${notification.createAt}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <a href="/notification/add" class="notifi_add">공지작성</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- footer       -->
+    <th:block th:insert="~{fragments/footer :: footerFragment}" />
+</div>
+</body>
+</html>

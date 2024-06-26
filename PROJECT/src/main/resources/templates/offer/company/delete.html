@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--  link   -->
+    <th:block th:insert="~{fragments/link :: linkFragment}" />
+    <style>
+        section {
+            text-align: center;
+        }
+        button {
+                background-color: aqua;
+        border: 1px solid pink;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <header>
+        <!-- header   -->
+        <th:block th:insert="~{fragments/top_header :: topHeaderFragment}" />
+        <!-- nav       -->
+        <th:block th:insert="~{fragments/nav :: navFragment}" />
+
+    </header>
+    <main>
+        <section>
+            <h1>회사정보 삭제</h1>
+            <form action="/offer/company/delete" method="post">
+                <label for="id">Id :</label>
+                <input type="text" id="id" name="id" required><br>
+                <button>삭제</button>
+            </form>
+
+        </section>
+    </main>
+
+    <!-- footer       -->
+    <th:block th:insert="~{fragments/footer :: footerFragment}" />
+</div>
+</body>
+</html>

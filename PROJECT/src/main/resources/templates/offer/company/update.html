@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--  link   -->
+    <th:block th:insert="~{fragments/link :: linkFragment}" />
+    <style>
+        .add {
+          width: 600px;
+          padding: 20px;
+          border: 1px solid pink;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          text-align: center;
+          position: relative;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: #fff;
+        }
+        h1 {
+          margin-top: 0;
+          margin-bottom: 20px;
+          color: #ff69b4;
+        }
+        .for {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .for > label {
+          font-weight: bold;
+          margin-bottom: 5px;
+          color: #333;
+        }
+        .for > input,
+        .for > textarea {
+          width: 100%;
+          padding: 10px;
+          margin-bottom: 15px;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+        }
+        button {
+          width: 100%;
+          padding: 10px;
+          border: none;
+          border-radius: 5px;
+          background-color: hotpink;
+          color: white;
+          font-size: 16px;
+          cursor: pointer;
+          transition: background-color 0.3s;
+        }
+        button:hover {
+          background-color: #ff85c0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <header>
+        <!-- header   -->
+        <th:block th:insert="~{fragments/top_header :: topHeaderFragment}" />
+        <!-- nav       -->
+        <th:block th:insert="~{fragments/nav :: navFragment}" />
+
+    </header>
+    <main>
+        <section>
+            <div class="add">
+                <h1>회사정보 수정</h1>
+                <form action="/offer/company/update" method="post" class="for">
+                    <label for="id">Id :</label>
+                    <input type="text" id="id" name="id" required><br>
+                    <label for="companyName">회사 이름:</label>
+                    <input type="text" id="companyName" name="companyName" required><br>
+
+                    <label for="companyNumber">사업자 번호 :</label>
+                    <input type="text" id="companyNumber" name="companyNumber" required><br>
+
+                    <label for="zipcode">우편번호 : </label>
+                    <input type="text" id="zipcode" name="zipcode" required><br>
+
+                    <label for="companyaddr1">회사 주소 : </label>
+                    <input type="text" id="companyaddr1" name="companyaddr1" required><br>
+
+                    <label for="companyaddr2">상세주소 : </label>
+                    <input type="text" id="companyaddr2" name="companyaddr2" required><br>
+
+                    <label for="companyEmail">회사 이메일:</label>
+                    <input type="email" id="companyEmail" name="companyEmail" required><br>
+
+                    <label for="companyPhone">회사 전화번호:</label>
+                    <input type="tel" id="companyPhone" name="companyPhone" required><br>
+
+                    <label for="companyIndustry">업종:</label>
+                    <input type="text" id="companyIndustry" name="companyIndustry" required><br>
+
+                    <label for="companyexplanation">회사 설명:</label>
+                    <textarea id="companyexplanation" name="companyexplanation" cols="40" rows="4" required></textarea><br>
+
+                    <button type="submit">수정</button>
+                </form>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- footer       -->
+    <th:block th:insert="~{fragments/footer :: footerFragment}" />
+</div>
+</body>
+</html>
