@@ -10,6 +10,9 @@
     <!-- join.css -->
     <link rel="stylesheet" href="/css/user/join.css" />
 
+
+
+
     <!-- user/join.js -->
     <script src="/js/user/join.js" defer></script>
 </head>
@@ -79,14 +82,14 @@
                         <div class="m-2">
                             <label >우편번호 : </label>
                             <div class="" style="display:flex;justify-content:space-between;">
-                                <input type="text"  name="zipcode" class="form-control me-2" style="width:250px;" />
-                                <a href="" class="btn btn-secondary" style="width:80px">검색</a>
+                                <input type="text"  name="zipcode" class="form-control me-2 zipcode" style="width:250px;" />
+                                <a href="javascript:void(0)" class="btn btn-secondary search_addr_btn" style="width:80px">검색</a>
                             </div>
                         </div>
                         <div class="m-2">
                             <label >주소 : </label>
                             <div>
-                                <input type="text"  name="addr1" class="form-control mb-2"  placeholder="기본주소" />
+                                <input type="text"  name="addr1" class="form-control mb-2 addr1"  placeholder="기본주소" />
                                 <input type="text"  name="addr2"  class="form-control mb-2"  placeholder="상세주소" />
                             </div>
                         </div>
@@ -129,14 +132,14 @@
                         <div class="m-2">
                             <label >우편번호 : </label>
                             <div class="" style="display:flex;justify-content:space-between;">
-                                <input type="zipcode" name="zipcode"  class="form-control me-2" style="width:250px;" />
-                                <a href="" class="btn btn-secondary" style="width:80px">검색</a>
+                                <input type="text" name="zipcode"  class="form-control me-2 zipcode2" style="width:250px;" />
+                                <a href="javascript:void(0)" class="btn btn-secondary search_addr_btn2" style="width:80px">검색</a>
                             </div>
                         </div>
                         <div class="m-2">
                             <label>회사 주소 : </label>
                             <div>
-                                <input type=text name="companyAddr1"  class="form-control mb-2"  placeholder="기본주소" />
+                                <input type=text name="companyAddr1"  class="form-control mb-2 companyAddr1"  placeholder="기본주소" />
                                 <input type="text" name="companyAddr2" class="form-control mb-2"  placeholder="상세주소" />
                             </div>
                         </div>
@@ -156,7 +159,7 @@
                                 <option value="유통">유통</option>
                             </select>
                         </div>
-                        <div>
+                        <div class="m-2">
                             <label >회사 설명 : </label>
                             <textarea class="form-control w-100">
 
@@ -166,7 +169,6 @@
                             <button class="btn btn-success w-100 mb-3">회원가입</button>
                             <button class="btn btn-success w-100 mb-3">이전으로</button>
                         </div>
-
                     </form>
 
                 </div>
@@ -179,6 +181,61 @@
     <!-- footer       -->
     <th:block th:insert="~{fragments/footer :: footerFragment}" />
 </div>
+
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+
+    //-----------------------------------------------
+    //주소 검색
+    //-----------------------------------------------
+    const search_addr_btn = document.querySelector('.search_addr_btn');
+    search_addr_btn.addEventListener('click',function(){
+       new daum.Postcode({
+                oncomplete: function(data) {
+                    console.log(data);
+                    const zipcode = document.querySelector('.zipcode');
+                    const addr1 = document.querySelector('.addr1');
+
+                    if(data.userSelectedType==='R')
+                    {
+                        addr1.value = data.roadAddress;
+                    }
+                    else
+                    {
+                        addr1.value = data.jibunAddress;
+                    }
+                    zipcode.value=data.zonecode;
+
+                }
+            }).open();
+
+    });
+
+    const search_addr_btn2 = document.querySelector('.search_addr_btn2');
+    search_addr_btn2.addEventListener('click',function(){
+       new daum.Postcode({
+                oncomplete: function(data) {
+                    console.log(data);
+                    const zipcode = document.querySelector('.zipcode2');
+                    const addr = document.querySelector('.companyAddr1');
+
+                    if(data.userSelectedType==='R')
+                    {
+                        addr.value = data.roadAddress;
+                    }
+                    else
+                    {
+                        addr.value = data.jibunAddress;
+                    }
+                    zipcode.value=data.zonecode;
+
+                }
+            }).open();
+
+    });
+</script>
+
 
 
 </body>

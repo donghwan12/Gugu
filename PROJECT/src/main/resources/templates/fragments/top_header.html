@@ -19,7 +19,7 @@
 
                 <!-- 인증이후 -->
                 <th:block sec:authorize="isAuthenticated()">
-                    <li class=username><a href=""><span sec:authentication="principal.username"></span></a></li>
+                    <li  style="width:200px;" class=username><a href=""><span sec:authentication="principal.username"></span></a></li>
                     <li><a href="/user/myinfo">나의정보</a></li>
                     <li><a href="/logout">로그아웃</a></li>
                 </th:block>

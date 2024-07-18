@@ -1,5 +1,6 @@
 package com.example.jobKoreaIt.controller.user.offer;
 
+import com.example.jobKoreaIt.config.auth.PrincipalDetails;
 import com.example.jobKoreaIt.domain.common.dto.UserDto;
 import com.example.jobKoreaIt.domain.offer.dto.CompanyDto;
 import com.example.jobKoreaIt.domain.offer.dto.JobOfferDto;
@@ -10,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,6 +27,8 @@ public class OfferController {
 
     @Autowired
     private JobOfferServiceImpl jobOfferService;
+
+
     @GetMapping("/join")
     public String join_get(){
         log.info("GET /seeker/join...");
@@ -144,6 +148,18 @@ public class OfferController {
         jobOfferService.CompanyUpdate(company);
 
     }
+
+    @GetMapping("/myinfo/read")
+    public void myinfo_read(@AuthenticationPrincipal PrincipalDetails principalDetails,Model model){
+        model.addAttribute("userDto",principalDetails.getUserDto());
+        model.addAttribute("jobOfferDto",principalDetails.getJobOfferDto());
+    }
+    @GetMapping("/myinfo/update")
+    public void update(@AuthenticationPrincipal PrincipalDetails principalDetails,Model model){
+        model.addAttribute("userDto",principalDetails.getUserDto());
+        model.addAttribute("jobOfferDto",principalDetails.getJobOfferDto());
+    }
+
 }
 
 

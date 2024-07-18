@@ -21,5 +21,8 @@ public class UserDto {
 	private String password;
 	private String repassword;
 	private String role;
+	//추가
+	private String email;
+	private String id;
 
 }

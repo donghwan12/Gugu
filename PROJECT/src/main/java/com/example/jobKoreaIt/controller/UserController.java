@@ -50,9 +50,9 @@ public class UserController {
     @GetMapping("/user/myinfo")
     public String myinfo(@AuthenticationPrincipal PrincipalDetails principalDetails){
         if(principalDetails.getJobSeekerDto()!=null){
-            return "forward:/seeker/myinfo";
+            return "forward:/seeker/myinfo/read";
         }else{
-            return "forward:/offer/myinfo";
+            return "forward:/offer/myinfo/read";
         }
     }
 

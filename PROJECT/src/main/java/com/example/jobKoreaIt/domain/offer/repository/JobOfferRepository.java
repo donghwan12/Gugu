@@ -7,9 +7,13 @@ import com.example.jobKoreaIt.domain.seeker.entity.JobSeeker;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface JobOfferRepository extends JpaRepository<JobOffer,Long> {
     JobOffer findByUser(User user);
 
     JobOffer findByCompanyNumberAndCompanyEmail(String companyNumber, String companyEmail);
+
+    Optional<JobOffer> findByCompanyNumber(String companyNumber);
 }

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--  link   -->
+    <th:block th:insert="~{fragments/link :: linkFragment}" />
+
+    <link rel="stylesheet" href="/css/offer/myinfo.css">
+    <link rel="stylesheet" href="/css/offer/jobopening/applylist.css">
+
+
+
+    <script th:inline="javascript">
+        const message = [[${message}]];
+        if(message!==null)
+            alert(message);
+
+    </script>
+
+    <script src="/js/offer/jobopening/applylist.js" defer></script>
+
+</head>
+<body>
+
+<div class="wrapper">
+    <header>
+        <!-- header   -->
+        <th:block th:insert="~{fragments/top_header :: topHeaderFragment}" />
+        <!-- nav       -->
+        <th:block th:insert="~{fragments/nav :: navFragment}" />
+
+    </header>
+    <section class="layout-150">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">홈</a></li>
+                <li class="breadcrumb-item active" aria-current="page">TEMPLATE</li>
+            </ol>
+        </nav>
+    </section>
+
+    <main class="layout-150">
+        <aside>
+            <ul class="menu-01">
+                <li><a href="">회사정보 확인</a></li>
+                <li><a href="">회사정보 수정</a></li>
+                <li>
+                    <a href="javascript:void(0)">채용 공고 모집</a>
+                    <ul class="menu-02">
+                        <li><a href="/offer/jobopening/add">채용공고 등록</a></li>
+                        <li><a href="/offer/jobopening/list">채용공고 확인</a></li>
+                        <li><a href="/offer/jobopening/applylist">채용공고 신청현황</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+        <section>
+            <div>
+                <table class="table w-100">
+                    <thead class="bg-dark text-light">
+                    <tr >
+                        <th>No</th>
+                        <th>제목</th>
+                        <th>부서</th>
+                        <th>근무형태</th>
+                        <th>경력</th>
+                        <th>연봉</th>
+                        <th>기간</th>
+                        <th>지원자 확인</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="recruit,recruitStat:${list}">
+                        <td th:text="${recruitStat.count}"></td>
+                        <td class="title"><a th:href="@{/offer/jobopening/update(id=${recruit.id})}" th:text="${recruit.title}"></a></td>
+                        <td th:text="${recruit.department}"></td>
+                        <td th:text="${recruit.jobwork}"></td>
+                        <td th:text="${recruit.career}"></td>
+                        <td th:text="${recruit.salary}"></td>
+                        <td th:text="${recruit.startTime}+' ~ '+${recruit.endTime}"></td>
+                        <td><a class="apply_seeeker_btn" href="javascript:void(0) "  th:data-recruitid="${recruit.id}">확인하기</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- footer       -->
+    <th:block th:insert="~{fragments/footer :: footerFragment}" />
+</div>
+
+
+<!-- Button trigger modal -->
+<button style="display:none;" type="button" class="btn btn-primary apply_user_modal_btn" data-bs-toggle="modal" data-bs-target="#exampleModal11">
+    Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal apply_user fade" id="exampleModal11" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <ul class="user-btn-block">
+                </ul>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="control-btn-block">
+                    <div>
+                        <span class="status" style="font-size:.8rem;border : 1px solid green;color:green;box-shadow : 5px 5px 5px lightgray;"></span>
+                    </div>
+                    <div>
+                        <button type="button" style="font-size:.8rem" class="btn btn-secondary metting" data-bs-dismiss="modal">면접진행</button>
+                        <button type="button" style="font-size:.8rem" class="btn btn-secondary choice"  data-bs-dismiss="modal">채용확정</button>
+                    </div>
+                </div>
+                <div class="show-block">
+                    <table class="table w-100" style="font-size:.8rem;" >
+                        <tbody>
+                        <tr>
+                            <td colspan="4" class="title">제목</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="7"  style="border : 1px solid;width:200px;height:200px;" >
+                                <img class="file_path" alt="">
+                            </td>
+                            <td colspan="3"></td>
+                        </tr>
+                        <tr>
+                            <td class="bg-dark text-light" style="width:200px;">이름</td>
+                            <td colspan="2" class="name"></td>
+                        </tr>
+                        <tr>
+                            <td class="bg-dark text-light"  style="width:200px;">이메일</td>
+                            <td colspan="2" class="email"></td>
+                        </tr>
+                        <tr>
+                            <!--<td></td>-->
+                            <td class="bg-dark text-light">TEL</td>
+                            <td colspan="2" class="tel"></td>
+                        </tr>
+                        <tr>
+                            <td class="bg-dark text-light">출신학교</td>
+                            <td  colspan="2" class="schoolName"></td>
+                        </tr>
+                        <tr>
+                            <td class="bg-dark text-light">전공</td>
+                            <td  colspan="2" class="major"></td>
+                        </tr>
+                        <tr>
+                            <td class="bg-dark text-light">졸업년도</td>
+                            <td  colspan="2" class="graduationYear"></td>
+                        </tr>
+
+                        <tr class="carrer">
+                            <td colspan="4" class="bg-dark text-light" style="text-align:center;">경력</td>
+                        </tr>
+                        <tr class="certification">
+                            <td colspan="5" class="bg-dark text-light" style="text-align:center;">자격증</td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="5" class="bg-dark text-light summary" style="text-align:center;">자기소개</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                <textarea name="" id="" cols="30" rows="10" class="form-control w-100 summary-block">
+                                </textarea>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

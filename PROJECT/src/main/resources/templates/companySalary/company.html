@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- link -->
+    <th:block th:insert="~{fragments/link :: linkFragment}" />
+
+    <link rel="stylesheet" href="/css/companySalary/main.css"/>
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <!-- header -->
+        <th:block th:insert="~{fragments/top_header :: topHeaderFragment}" />
+        <!-- nav -->
+        <th:block th:insert="~{fragments/nav :: navFragment}" />
+    </header>
+    <ul class="dept2">
+        <li>기업리뷰</li>
+        <li>연봉정보</li>
+        <li>면접후기</li>
+        <li>기업큐레이션</li>
+    </ul>
+
+    <section class="main">
+        <div class="main-left">
+            <h1 >기업리뷰</h1>
+            <span>
+                앞으로 근무할 기업은 어떤 모습일까 궁금하시죠?</span><br>
+            <span >현직자, 퇴사자가 알려주는 생생한 기업리뷰</span><br>
+            <input text="" placeholder="어떤 기업의 리뷰가 궁금하신가요?">
+        </div>
+        <div class="main-right">
+            <div class="right-img">
+                <img src="/assets/companySalary/company.jpg">
+            </div>
+        </div>
+    </section>
+    <section class="main2">
+        <div class="inner-box">
+            <div class="inner-left">
+                <div class="item-default"></div>
+                <div class="item-default"></div>
+                <div class="item-default"></div>
+                <div class="item-default"></div>
+            </div>
+            <div class="inner-right">
+                <div class="item-right"></div>
+                <div class="item-right-row"></div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- footer -->
+    <th:block th:insert="~{fragments/footer :: footerFragment}" />
+</div>
+
+
+</body>
+</html>

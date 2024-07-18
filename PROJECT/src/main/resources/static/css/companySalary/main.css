@@ -1,0 +1,129 @@
+.main{
+    width:100%;
+    height:600px;
+    border:1px solid;
+    position:relative;
+    display:flex;
+}
+.dept2{
+    margin-top:60px;
+    display:flex;
+    position: absolute;
+    top: 63px;
+    width: 1260px;
+    border-bottom: 1px solid #eaedf4;
+    gap: 4px;
+    justify-content: start;
+    grid-auto-columns: minmax(1px, auto);
+    grid-auto-flow: column dense;
+    align-items: center;
+}
+.dept2>li{
+    margin-left:50px;
+}
+.main-left{
+    position:absolute;
+    margin-top:65px;
+    border:1px solid;
+    width:50%;
+    height:500px;
+    justify-content:center;
+    text-align:center;
+    background:linear-gradient(to right,lightCyan, skyBlue);
+}
+.main-left>h1{
+    margin-top:50px;
+    font-size:80px;
+    font-weight:900;
+}
+.main-left>span{
+    margin-top:100px;
+    font-size:30px;
+    font-weight:700;
+}
+.main-left>input{
+    margin-top:40px;
+    width:300px;
+    height:50px;
+}
+.main-right{
+    margin-top:65px;
+    margin-left:50%;
+    position:absolute;
+    border:1px solid;
+    width:50%;
+    height:500px;.
+    justify-content:center;
+    text-align:center;
+    display:flex;
+    overflow:hidden;
+}
+.main-right>img{
+     max-width: 100%; /* 추가: 이미지의 최대 너비를 컨테이너의 너비로 제한 */
+       max-height: 100%; /* 추가: 이미지의 최대 높이를 컨테이너의 높이로 제한 */
+       object-fit: contain; /* 추가: 이미지를 컨테이너에 맞추되 비율을 유지합니다 */
+}
+.main2{
+    position:relative;
+    border:2px solid;
+    width:100%;
+    height:500px;
+    justify-content:center;
+    display:flex;
+    text-align:center;
+    background-color:#eaeef5;
+}
+.inner-box{
+    position:absolute;
+    border:1px solid;
+    height:450px;
+    width:90%;
+    display:flex;
+    margin-top:20px;
+}
+.inner-left{
+    position:absolute;
+    border:1px solid;
+    height:100%;
+    max-width:60%;
+    display:flex;
+    justify-content:center;
+}
+.item-default{
+        margin-top:50px;
+        float: left;
+        position: relative;
+        width: 400px;
+        height: 250px;
+        border: 1px solid transparent;
+        border-radius: 12px;
+        box-sizing: border-box;
+        background-color: #fff;
+        margin-left:10px;
+}
+.inner-right{
+    position:absolute;
+    border:1px solid;
+    height:100%;
+    width:40%;
+    margin-left:60%;
+}
+.item-right{
+    margin-top:20px;
+    width:600px;
+    height:200px;
+    border: 1px solid transparent;
+            border-radius: 12px;
+            box-sizing: border-box;
+            background-color: #fff;
+            margin-left:20px;
+}
+.item-right-row{
+    margin-top:220px;
+    width:600px;
+        border: 1px solid transparent;
+                border-radius: 12px;
+                box-sizing: border-box;
+                background-color: #fff;
+                margin-left:20px;
+}

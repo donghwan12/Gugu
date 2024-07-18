@@ -4,39 +4,39 @@
     <meta charset="UTF-8">
     <title>Title</title>
 
-    <!--  link   -->
+    <!-- link -->
     <th:block th:insert="~{fragments/link :: linkFragment}" />
 
-
-    <!-- index.css   -->
+    <!-- index.css -->
     <link rel="stylesheet" href="/css/index.css">
 
-    <!--  index.js  -->
+    <!-- index.js -->
     <script src="/js/index.js" defer></script>
 
-
+    <!-- Playfair Display Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-
 <div class="wrapper">
     <header>
-        <!-- header   -->
+        <!-- header -->
         <th:block th:insert="~{fragments/top_header :: topHeaderFragment}" />
-        <!-- nav       -->
+        <!-- nav -->
         <th:block th:insert="~{fragments/nav :: navFragment}" />
-
     </header>
     <main class="">
         <section class="main-block layout-150">
 
             <div class="left">
-                LEFT
+                <a href="https://www.saramin.co.kr/zf_user/event/community-challenge-promo?inner_source=saramin&inner_medium=banner&inner_campaign=pc_main&inner_term=community-challenge-promo">
+                    <img src="/assets/indexslide/left_img.png" alt="Left Image"/>
+                </a>
             </div>
 
             <div class="banner-section" >
                 <div class="notification">
-                    <a href="/notification/list">공지사항</a>
+                    <span class="notice-title"><a href="/Notification/list">공지사항</a></span> : 취업을 하면 축하금 50만원도 같이? 취업축하금 공고에 지원해 보세요!
                 </div>
                 <!-- Slider main container -->
                 <div class="swiper centers">
@@ -44,14 +44,13 @@
                     <div class="swiper-wrapper">
 
                         <!-- Slides -->
-                        <div class="swiper-slide">  <a href="javascript:void(0)"><img src="" alt=""> </a>   </div>
-                        <div class="swiper-slide">  <a href="javascript:void(0)"><img src="" alt=""> </a>   </div>
-                        <div class="swiper-slide">  <a href="javascript:void(0)"><img src="" alt=""> </a>   </div>
-                        <div class="swiper-slide">  <a href="javascript:void(0)"><img src="" alt=""> </a>   </div>
-                        <div class="swiper-slide">  <a href="javascript:void(0)"><img src="" alt=""> </a>   </div>
-                        <div class="swiper-slide">  <a href="javascript:void(0)"><img src="" alt=""> </a>   </div>
-                        <div class="swiper-slide">  <a href="javascript:void(0)"><img src="" alt=""> </a>   </div>
-                        <div class="swiper-slide">  <a href="javascript:void(0)"><img src="" alt=""> </a>   </div>
+
+                        <div class="swiper-slide">  <a href="javascript:void(0)"><img src="/assets/indexslide/slide1.png" alt="slide1"> </a>   </div>
+                        <div class="swiper-slide">  <a href="javascript:void(0)"><img src="/assets/indexslide/slide2.png" alt="slide2"> </a>   </div>
+                        <div class="swiper-slide">  <a href="javascript:void(0)"><img src="/assets/indexslide/slide3.png" alt="slide3"> </a>   </div>
+                        <div class="swiper-slide">  <a href="javascript:void(0)"><img src="/assets/indexslide/slide4.png" alt="slide4"> </a>   </div>
+                        <div class="swiper-slide">  <a href="javascript:void(0)"><img src="/assets/indexslide/slide5.png" alt="slide5"> </a>   </div>
+                        <div class="swiper-slide">  <a href="javascript:void(0)"><img src="/assets/indexslide/slide6.png" alt="slide6"> </a>   </div>
 
                     </div>
                     <!-- If we need pagination -->
@@ -69,37 +68,137 @@
                     <!-- If we need scrollbar -->
                     <div class="swiper-scrollbar"></div>
                 </div>
-
             </div>
             <div class="right">
-                right
+                <a href="https://www.saramin.co.kr/zf_user/company-review-qst-and-ans/detail-page?qust_idx=75239">
+                    <img src="/assets/indexslide/right_img.png" alt="right Image"/>
+                </a>
             </div>
         </section>
 
 
         <section class="company_items">
             <div class="items">
-
-                <div class="item">모집공고</div>
-                <div class="item">모집공고</div>
-                <div class="item">모집공고</div>
-                <div class="item">모집공고</div>
-                <div class="item">모집공고</div>
-                <div class="item">모집공고</div>
-                <div class="item">모집공고</div>
-                <div class="item">모집공고</div>
-                <div class="item">모집공고</div>
-                <div class="item">모집공고</div>
-                <div class="item">모집공고</div>
-                <div class="item">모집공고</div>
-                <div class="item">모집공고</div>
-                <div class="item">모집공고</div>
-                <div class="item">모집공고</div>
-                <div class="item">모집공고</div>
-                <div class="item">모집공고</div>
-                <div class="item">모집공고</div>
-                <div class="item">모집공고</div>
-                <div class="item">모집공고</div>
+                <div class="item">
+                    <a href="/main">
+                        <img src="assets/logo/sk.png" alt="sk">
+                        <div>교육 분야 대규모 채용</div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="/main">
+                        <img src="assets/logo/cham.png" alt="cham">
+                        <div>각 부문 신입/경력 채용</div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="/main">
+                        <img src="assets/logo/coupang.png" alt="coupang">
+                        <div>모바일 캠프 리더(MCL) 양성</div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="/main">
+                        <img src="assets/logo/daebo.png" alt="daebo">
+                        <div>각 부문 경력직 수시채용</div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="/main">
+                        <img src="assets/logo/tsis.png" alt="tsis">
+                        <div>2024년 하반기 채용</div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="/main">
+                        <img src="assets/logo/dragonce.png" alt="dragonce">
+                        <div>2024년 하반기 채용</div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="/main">
+                        <img src="assets/logo/expressway.png" alt="expressway">
+                        <div>신입/경력 인재 채용</div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="/main">
+                        <img src="assets/logo/fasoo.png" alt="fasoo">
+                        <div>신입/경력 인재 채용</div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="/main">
+                        <img src="assets/logo/fco.png" alt="fco">
+                        <div>신입/경력 인재 채용</div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="/main">
+                        <img src="assets/logo/feed.png" alt="feed">
+                        <div>신입/경력 인재 채용</div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="/main">
+                        <img src="assets/logo/gsbuild.png" alt="gsbuild">
+                        <div>신입/경력 인재 채용</div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="/main">
+                        <img src="assets/logo/hyundai.png" alt="hyundai">
+                        <div>신입/경력 인재 채용</div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="/main">
+                        <img src="assets/logo/ict.png" alt="ict">
+                        <div>신입/경력 인재 채용</div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="/main">
+                        <img src="assets/logo/inchoen.png" alt="inchoen">
+                        <div>신입/경력 인재 채용</div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="/main">
+                        <img src="assets/logo/sk.png" alt="sk">
+                        <div>신입/경력 인재 채용</div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="/main">
+                        <img src="assets/logo/jumpit.png" alt="jumpit">
+                        <div>신입/경력 인재 채용</div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="/main">
+                        <img src="assets/logo/koreabio.png" alt="koreabio">
+                        <div>신입/경력 인재 채용</div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="/main">
+                        <img src="assets/logo/posco.png" alt="posco">
+                        <div>신입/경력 인재 채용</div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="/main">
+                        <img src="assets/logo/samhwa.png" alt="samhwa">
+                        <div>신입/경력 인재 채용</div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="/main">
+                        <img src="assets/logo/samsung.png" alt="samsung">
+                        <div>신입/경력 인재 채용</div>
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -112,81 +211,67 @@
                     <!-- Slides -->
                     <div class="swiper-slide">
                         <a href="javascript:void(0)">
-                            <img src="" alt="">
+                            <img src="assets/swiperlogo/1.png" alt="1">
                         </a>
                     </div>
                     <div class="swiper-slide">
                         <a href="javascript:void(0)">
-                            <img src="" alt="">
+                            <img src="assets/swiperlogo/2.png" alt="2">
                         </a>
                     </div>
                     <div class="swiper-slide">
                         <a href="javascript:void(0)">
-                            <img src="" alt="">
+                            <img src="assets/swiperlogo/3.png" alt="3">
                         </a>
                     </div>
                     <div class="swiper-slide">
                         <a href="javascript:void(0)">
-                            <img src="" alt="">
+                            <img src="assets/swiperlogo/4.png" alt="4">
                         </a>
                     </div>
                     <div class="swiper-slide">
                         <a href="javascript:void(0)">
-                            <img src="" alt="">
+                            <img src="assets/swiperlogo/5.png" alt="5">
                         </a>
                     </div>
                     <div class="swiper-slide">
                         <a href="javascript:void(0)">
-                            <img src="" alt="">
+                            <img src="assets/swiperlogo/6.png" alt="6">
                         </a>
                     </div>
                     <div class="swiper-slide">
                         <a href="javascript:void(0)">
-                            <img src="" alt="">
+                            <img src="assets/swiperlogo/7.png" alt="7">
                         </a>
                     </div>
                     <div class="swiper-slide">
                         <a href="javascript:void(0)">
-                            <img src="" alt="">
+                            <img src="assets/swiperlogo/8.png" alt="8">
                         </a>
                     </div>
                     <div class="swiper-slide">
                         <a href="javascript:void(0)">
-                            <img src="" alt="">
+                            <img src="assets/swiperlogo/9.png" alt="9">
                         </a>
                     </div>
                     <div class="swiper-slide">
                         <a href="javascript:void(0)">
-                            <img src="" alt="">
+                            <img src="assets/swiperlogo/10.png" alt="10">
                         </a>
                     </div>
                     <div class="swiper-slide">
                         <a href="javascript:void(0)">
-                            <img src="" alt="">
+                            <img src="assets/swiperlogo/11.png" alt="11">
                         </a>
                     </div>
-                    <div class="swiper-slide">
-                        <a href="javascript:void(0)">
-                            <img src="" alt="">
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="javascript:void(0)">
-                            <img src="" alt="">
-                        </a>
-                    </div>
-
                 </div>
-
             </div>
-
         </section>
-
 
         <section></section>
     </main>
 
-    <!-- footer       -->
+    <!-- footer -->
     <th:block th:insert="~{fragments/footer :: footerFragment}" />
 </div>
 </body>

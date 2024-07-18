@@ -47,7 +47,7 @@ public class NotificationController {
         log.info("GET/notificaiton/....");
         List<notificationDto> notifications=notifiService.notifi_list();
         model.addAttribute("notifications",notifications);
-        return "notification/list";
+        return "Notification/list";
     }
 
     //공지상세읽기

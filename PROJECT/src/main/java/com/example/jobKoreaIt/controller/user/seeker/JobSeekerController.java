@@ -1,28 +1,23 @@
 package com.example.jobKoreaIt.controller.user.seeker;
 
+import com.example.jobKoreaIt.config.auth.PrincipalDetails;
 import com.example.jobKoreaIt.domain.common.dto.UserDto;
 import com.example.jobKoreaIt.domain.seeker.dto.JobSeekerDto;
-import com.example.jobKoreaIt.domain.seeker.dto.ResumeDto;
-import com.example.jobKoreaIt.domain.seeker.entity.Career;
-import com.example.jobKoreaIt.domain.seeker.entity.Resume;
-import com.example.jobKoreaIt.domain.seeker.dto.ResumeFormDto;
-import com.example.jobKoreaIt.domain.seeker.repository.CareerRepository;
+import com.example.jobKoreaIt.domain.seeker.entity.Apply;
+import com.example.jobKoreaIt.domain.seeker.service.ApplyServiceImpl;
 import com.example.jobKoreaIt.domain.seeker.service.JobSeekerServiceImpl;
-import com.example.jobKoreaIt.domain.seeker.service.ResumeServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 @Controller
 @Slf4j
@@ -78,8 +73,18 @@ public class JobSeekerController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @GetMapping("/myinfo")
+    @GetMapping("/myinfo/read")
     public void myinfo(){
+
+    }
+
+    @Autowired
+    private ApplyServiceImpl applyService;
+
+    @GetMapping("/myinfo/applylist")
+    public void applylist(@AuthenticationPrincipal PrincipalDetails principalDetails, Model model){
+        List<Apply> list =  applyService.getSeekerApply(principalDetails);
+        model.addAttribute("list",list);
 
     }
 }

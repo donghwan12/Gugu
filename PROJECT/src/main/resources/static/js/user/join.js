@@ -15,3 +15,6 @@
        seekerJoin.classList.add('hidden');
        offerJoin.classList.remove('hidden');
     })
+
+
+

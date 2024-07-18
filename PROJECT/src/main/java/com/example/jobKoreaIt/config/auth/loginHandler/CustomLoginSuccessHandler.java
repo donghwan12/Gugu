@@ -24,12 +24,20 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler  
     private JwtTokenProvider jwtTokenProvider;
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-        System.out.println("[CustomLoginSuccessHandler] onAuthenticationSuccess()");
+        System.out.println("[CustomLoginSuccessHandler] onAuthenticationSuccess() authentication " + authentication);
 
         //--------------------------------------
         //JWT ADD
         //--------------------------------------
-        PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
+//        PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
+
+        //추가
+        PrincipalDetails principalDetails;
+        if (authentication.getPrincipal() instanceof PrincipalDetails) {
+            principalDetails = (PrincipalDetails) authentication.getPrincipal();
+        } else {
+            throw new ClassCastException("Authentication principal is not of type PrincipalDetails");
+        }
 
         TokenInfo tokenInfo = jwtTokenProvider.generateToken(authentication);
         // 쿠키 생성
@@ -40,9 +48,9 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler  
         //--------------------------------------
 
 
+        // 카카오API 로그인
+        System.out.println("Login with kakao ! " + authentication.getName());
         response.sendRedirect("/");
-
-
     }
 
 

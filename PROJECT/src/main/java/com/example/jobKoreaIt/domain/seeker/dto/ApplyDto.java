@@ -1,6 +1,5 @@
 package com.example.jobKoreaIt.domain.seeker.dto;
 
-import com.example.jobKoreaIt.domain.offer.entity.Recruit;
 import com.example.jobKoreaIt.domain.seeker.entity.JobSeeker;
 import com.example.jobKoreaIt.domain.seeker.entity.Resume;
 import lombok.AllArgsConstructor;
@@ -15,20 +14,10 @@ public class ApplyDto {
 
     private long id;
 
-    private String name;
-    private String tell;
-    private String email;
-    private String addr; //주소
-    private String nationality; //국적
-    private String birthDate; //생년월일
-    private String expectedSalary; //희망연봉
-    private String militaryService; //병역사항
+    private Long resume_id;
+    private Long recruit_id;
 
-    private Resume resume;
+    private String seeker_status;
+    private String offer_status;
 
-    private JobSeeker jobSeeker;
-
-    private Recruit recruit;
-
-    private String objective; //지원종목
 }

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--  link   -->
+    <th:block th:insert="~{fragments/link :: linkFragment}" />
+
+    <link rel="stylesheet" href="/css/offer/myinfo.css">
+
+    <script src="/js/template.js" defer></script>
+
+
+</head>
+<body>
+
+<div class="wrapper">
+    <header>
+        <!-- header   -->
+        <th:block th:insert="~{fragments/top_header :: topHeaderFragment}" />
+        <!-- nav       -->
+        <th:block th:insert="~{fragments/nav :: navFragment}" />
+
+    </header>
+    <section class="layout-150">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">홈</a></li>
+                <li class="breadcrumb-item"><a href="#">회사</a></li>
+                <li class="breadcrumb-item active" aria-current="page">나의정보</li>
+            </ol>
+        </nav>
+    </section>
+    <main class="layout-150">
+            <aside>
+                <ul class="menu-01">
+                    <li><a href="/offer/myinfo/read">회사정보 확인</a></li>
+                    <li><a href="/offer/myinfo/update">회사정보 수정</a></li>
+                    <li>
+                        <a href="">채용 공고 모집</a>
+                        <ul class="menu-02">
+                            <li><a href="/offer/jobopening/add">채용공고 등록</a></li>
+                            <li><a href="/offer/jobopening/list">채용공고 확인</a></li>
+                            <li><a href="/offer/jobopening/applylist">채용공고 신청현황</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </aside>
+            <section>
+                <h4>회사정보</h4>
+                <hr>
+                <table class="table" style="font-size:.8rem;">
+                    <tbody>
+                        <tr>
+                            <td class="bg-dark text-light" style="width:250px;">계정명</td>
+                            <td th:text="${userDto.userid}"></td>
+                            <td class="bg-dark text-light">패스워드</td>
+                            <td>[보안]</td>
+                        </tr>
+                        <tr>
+                           <td class="bg-dark text-light">회사명</td>
+                           <td th:text="${jobOfferDto.companyName}"></td>
+                           <td class="bg-dark text-light">사업자 번호</td>
+                           <td th:text="${jobOfferDto.companyNumber}"></td>
+                        </tr>
+                        <tr>
+                            <td class="bg-dark text-light">회사이메일</td>
+                            <td th:text="${jobOfferDto.companyEmail}"></td>
+                            <td class="bg-dark text-light">TEL.</td>
+                            <td th:text="${jobOfferDto.companyPhone}"></td>
+                        </tr>
+                        <tr>
+                            <td class="bg-dark text-light">업종</td>
+                            <td colspan="3" th:text="${jobOfferDto.companyIndustry}"></td>
+                        </tr>
+                        <tr>
+                            <td class="bg-dark text-light">우편번호</td>
+                            <td th:text="${jobOfferDto.zipcode}"></td>
+                            <td class="bg-dark text-light">주소</td>
+                            <td th:text="${jobOfferDto.companyAddr1}+' '+${jobOfferDto.companyAddr2}"></td>
+                        </tr>
+                        <tr>
+                            <td class="bg-dark text-light">회사소개</td>
+                            <td colspan="3" th:text="${jobOfferDto.companyexplanation}"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                <hr>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="/offer/myinfo/update" class="btn btn-primary" style="font-size:.8rem;">수정하기</a>
+                                <a href="/" class="btn btn-secondary" style="font-size:.8rem;">회원탈퇴</a>
+                            </td>
+                            <td colspan="3">
+
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+            </section>
+
+    </main>
+
+    <!-- footer       -->
+    <th:block th:insert="~{fragments/footer :: footerFragment}" />
+</div>
+</body>
+</html>

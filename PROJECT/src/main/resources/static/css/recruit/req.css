@@ -1,0 +1,73 @@
+main>section{
+    width : 850px;
+    margin : 0 auto;
+}
+
+main>section>.header>.top-header{
+    font-size : .8rem;
+    height : 35px;
+    margin-bottom : 20px;
+    display:flex;
+    justify-content:left;
+    align-items : center;
+}
+main>section>.header>.top-header>span{
+    display:block;
+    padding : 3px;
+    margin-right : 5px;
+}
+main>section>.header>.top-header>span>*{
+    margin-right:10px;
+}
+
+main>section>.header>.title{
+    display:flex;
+    justify-content :space-between;
+    align-items : start;
+}
+main>section>.header>.title>.apply-btn>a{
+    display:block;
+    width : 200px;
+    height : 80px;
+    font-size : 1.3rem;
+
+    display:flex;
+    justify-content : center;
+    align-items : center;
+}
+
+
+.modal .table{
+    font-size : .8rem;
+    text-align:center;
+
+}
+
+.modal .table tr{
+    border : 0px;
+}
+.modal .table td{
+    border : 0px;
+    margin-bottom : 3px;
+    padding : 10px;
+
+}
+.modal{
+    border : 0px;
+}
+.modal input[type='checkbox']
+{
+    display:none;
+}
+.modal input[type='checkbox']+label{
+     width : 15px;
+     height : 15px;
+        border : 1px solid;
+}
+
+.modal input[type='checkbox']:checked+label{
+    background-image:url('/assets/check.svg');
+    background-repeat : no-repeat;
+    background-position:center;
+    background-size:contain;
+}

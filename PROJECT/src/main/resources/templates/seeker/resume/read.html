@@ -1,54 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>이력서 상세정보</title>
+    <title>Resume Add</title>
+
     <!-- link -->
     <th:block th:insert="~{fragments/link :: linkFragment}" />
-    <style>
-        /* 스타일링 */
-        .resume-details {
-            margin-top: 20px;
-            padding: 20px;
-            border: 1px solid #dddddd;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-        }
-        .resume-details h2 {
-            margin-bottom: 10px;
-        }
-        .resume-details dl {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .resume-details dt {
-            font-weight: bold;
-        }
-        .resume-details dd {
-            margin-left: 0;
-        }
-        .update {
-            background: #5cb85c;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 4px;
-            margin-top: 20px;
-        }
-        .update{
-            display:button
-            margin-top: 20px;
-            background: #5cb85c;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
 
-    </style>
+    <link rel="stylesheet" href="/css/seeker/resume/read.css">
+    <script src="/js/seeker/resume/add.js" defer></script>
 </head>
 <body>
 <div class="wrapper">
@@ -58,65 +18,113 @@
         <!-- nav -->
         <th:block th:insert="~{fragments/nav :: navFragment}" />
     </header>
-    <main>
+    <main class="layout-150">
         <section>
-            <h1>이력서 상세정보</h1>
-            <div class="resume-details">
-                <h2>기본 정보</h2>
-                <dl>
-                    <dt>이름</dt>
-                    <dd th:text="${resume.name}"></dd>
-                    <dt>Email</dt>
-                    <dd th:text="${resume.email}"></dd>
-                    <dt>전화번호</dt>
-                    <dd th:text="${resume.phone}"></dd>
-                </dl>
-
-                <h2>학력</h2>
-                <dl>
-                    <dt>학교명</dt>
-                    <dd th:text="${resume.schoolName}"></dd>
-                    <dt>전공</dt>
-                    <dd th:text="${resume.major}"></dd>
-                    <dt>졸업년도</dt>
-                    <dd th:text="${resume.graduationYear}"></dd>
-                </dl>
-
-                <h2>경력</h2>
-                <dl th:each="career : ${resume.careers}">
-                    <dt>회사명</dt>
-                    <dd th:text="${career.companyName}"></dd>
-                    <dt>직급</dt>
-                    <dd th:text="${career.position}"></dd>
-                    <dt>시작일</dt>
-                    <dd th:text="${career.startDate}"></dd>
-                    <dt>종료일</dt>
-                    <dd th:text="${career.endDate}"></dd>
-                </dl>
-
-                <h2>기술 및 자격증</h2>
-                <dl>
-                    <dt>자격증명</dt>
-                    <dd th:text="${resume.certificationName}"></dd>
-                </dl>
-
-                <h2>자기소개서</h2>
-                <p id="summaryContent" th:utext="${#strings.replace(resume.summary, '\n', '<br/>')}"></p>
-                <h2>취미</h2>
-                <p th:text="${resume.hobbies}"></p>
+            <div style="margin:30px auto;">
+                <h2>이력서 조회</h2>
             </div>
-            <a th:href="@{/seeker/resume/update/{id}(id=${resume.id})}" class="update">수정하기</a>
+            <form onsubmit="return false" action="/seeker/resume/add" name="resumeAddForm" method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="title">제목:</label>
+                    <input th:value="${resume.title}" type="text" id="title" name="title"   class="form-control w-100" required  />
+                </div>
+                <div class="basic-info">
+
+                    <div class="photo-block">
+                        <div  style="width:300px;height:300px;display:flex;justify-content:center;align-items:center;border: 1px solid;padding : 5px;">
+                            <img  th:src="@{${resume.filePath}}" alt="사진 미리보기"  style="width:100%;height:100%;object-fit:contain;"/>
+                        </div>
+                    </div>
+                    <div class="seeker-info">
+                        <div>
+                            <label for="name">이름:</label>
+                            <input type="text" id="name" name="name" th:value="${resume.name}"  class="form-control w-100" required  />
+                        </div>
+                        <div>
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email"  th:value="${resume.email}" class="form-control w-100"required />
+                        </div>
+                        <div>
+                            <label for="phone">휴대폰번호:</label>
+                            <input type="text" id="phone"  name="phone"   th:value="${resume.phone}" class="form-control w-100" required  />
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin:30px auto;">
+                    <h3>학력</h3>
+                </div>
+
+                <div>
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <td>출신학교</td>
+                            <td> <input type="text" th:value="${resume.schoolName}"  id="schoolName" name="schoolName"  class="w-100 form-control" required /></td>
+                            <td>전공</td>
+                            <td> <input type="text" th:value="${resume.major}" id="major" name="major" class="w-100 form-control" required /></td>
+                        </tr>
+                        <tr>
+                            <td>졸업년도</td>
+                            <td><input type="text" th:value="${resume.graduationYear}"  class="w-100 form-control" id="graduationYear" name="graduationYear" required /></td>
+                            <td colspan="2"></td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+                <hr>
+
+                <div style="margin:30px auto;display:flex;justify-content:space-between;margin-bottom :15px;">
+                    <h3>경력</h3>
+                </div>
+                <div id="careerContainer">
+                    <table class="certificationTable table w-100">
+                        <tbody>
+                        <tr th:each="carrer:${carrerList}">
+                            <td  th:text="${carrer.companyName}"></td>
+                            <td  th:text="${carrer.position}"></td>
+                            <td  th:text="${carrer.startDate}"></td>
+                            <td  th:text="${carrer.endDate}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <hr>
+
+                <div style="margin:30px auto;display:flex;justify-content:space-between;margin-bottom :15px;">
+                    <h3>기술 및 자격증</h3>
+                </div>
+                <div>
+                    <table class="certificationTable table w-100">
+                        <tbody>
+                            <tr th:each="cert:${certificationList}">
+                                <td colspan="2" th:text="${cert.certificationName}"></td>
+                                <td colspan="2" th:text="${cert.certificationDate}"></td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <hr>
+                <div style="margin:30px auto;">
+                    <h3>자기소개</h3>
+                </div>
+                <div>
+                    <label for="summary">자기소개서:</label>
+                    <textarea id="summary" name="summary" class="form-control" required style="height:300px;" th:text="${resume.summary}"></textarea>
+                </div>
+                <div>
+                    <a href="javascript:void(0)" class="btn-styles submit_btn btn btn-success mt-3" style="margin-top:15px;">작성완료</a>
+                </div>
+            </form>
         </section>
     </main>
-    <!-- footer -->
-    <th:block th:insert="~{fragments/footer :: footerFragment}" />
+    <footer>
+        <!-- footer -->
+        <th:block th:insert="~{fragments/footer :: footerFragment}" />
+    </footer>
 </div>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var summaryContent = document.getElementById('summaryContent');
-        var text = summaryContent.innerText;
-        summaryContent.innerHTML = text.replace(/\n/g, '<br>');
-    });
-</script>
 </body>
 </html>

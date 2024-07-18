@@ -2,6 +2,10 @@ package com.example.jobKoreaIt.domain.common.repository;
 
 
 import com.example.jobKoreaIt.domain.common.entity.Community;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

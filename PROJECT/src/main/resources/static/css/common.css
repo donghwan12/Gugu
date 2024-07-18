@@ -1,3 +1,6 @@
+:root{
+    font-size : .8rem;
+}
 *{
 	box-sizing:border-box;
 }
@@ -25,13 +28,13 @@ ul{
 
 /*  */
 .wrapper>header{
-	height : 100px;
-	border-bottom : 1px solid;
+
+
 }
 .wrapper>header>.top-header{
 	height : 30px;
 	
-	border-bottom : 1px solid;
+    background-color : white;
 	display:flex;
 	justify-content: space-between;
 	align-items : center;
@@ -53,7 +56,12 @@ ul{
 	font-size : .8rem;
 	
 	position:relative;
-	border-right:1px solid;
+	border-right:1px solid gray;
+
+	position:relative;
+}
+.wrapper>header>.top-header>.right>.menu>li>a{
+
 }
 .wrapper>header>.top-header>.right>.menu>li.username{
 	padding : 0px 10px;
@@ -81,6 +89,10 @@ ul{
 	display:flex;
 	justify-content: space-between;
 	align-items : center;
+    padding-top : 5px;
+    padding-bottom : 5px;
+    border : 1px solid lightgray ;
+    background-color : white;
 }
 .wrapper>header>nav>.left{
 	width : 100%;
@@ -105,7 +117,7 @@ ul{
 .wrapper>header>nav>.left>.logo{
 	width : 150px;
 	height : 50px;
-	border : 1px solid lightgray;
+	/*border : 1px solid lightgray;*/
 	margin : 5px;
 	
 	margin-right : 15px;
@@ -158,9 +170,31 @@ ul{
 .wrapper>header>nav>.right>.menu>li{
 	width : 150px;
 	height : 70px;
-	
-	border-left:1px solid gray;
-	border-right:1px solid gray;
+
+	border : 1px solid lightgray;
+	trantision:.5s;
+	/*border-left:1px solid gray;
+	border-right:1px solid gray;*/
+	position:relative;
+}
+
+.wrapper>header>nav>.right>.menu>li::before{
+    content:'';
+
+    position:absolute;
+    left:0px;
+    top:0px;
+    display:block;
+    border-top:5px solid royalblue;
+    border-right:5px solid transparent;
+    border-left:5px solid royalblue;
+    border-bottom:5px solid transparent;
+}
+
+
+.wrapper>header>nav>.right>.menu>li:hover{
+    border-bottom : 3px solid royalblue;
+
 }
 .wrapper>header>nav>.right>.menu>li>a{
 	display:block;
@@ -173,7 +207,7 @@ ul{
 	
 }
 .wrapper>header>nav>.right>.menu>li>ul{
-	border : 1px solid;
+	/*border : 1px solid;*/
 	display:none;
 }
 .wrapper>header>nav>.right>.menu>li>ul>li{
@@ -196,7 +230,7 @@ ul{
 }
 /*  */
 .wrapper>main{
-	       	margin : 15px 0px;
+	       	margin : 25px 0px;
 			position:relative;
        }
         
@@ -206,7 +240,7 @@ ul{
 .wrapper>footer{
 	width : 100%;
 	height : 300px;
-	border : 1px solid;
+
 	font-size : 1rem;
 }
 
@@ -219,7 +253,7 @@ ul{
 }
 .main-block aside.left{
 	width : 250px;	
-	border : 1px solid;	
+	border : 1px solid;
 	margin-right : 25px;
 	align-self: stretch;
 	
@@ -328,7 +362,6 @@ footer .footer-bottom{
 
 /* MODAL /*/
 .modal-content{
-    border : 3px solid darkcyan;
 }
 .modal-body{
 
@@ -340,7 +373,7 @@ footer .footer-bottom{
     border : 1px solid;
     margin : 5px;
     padding : 10px;
-    height : 270px;
+
 }
 .modal-body>div>*{
     margin-bottom : 5px;

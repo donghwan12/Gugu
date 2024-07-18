@@ -31,9 +31,12 @@ public class PrincipalDetails implements UserDetails, OAuth2User {
     private Map<String,Object> attributes;
 
 
+
+
+    //return 수정
     @Override
     public Map<String, Object> getAttributes() {
-        return null;
+        return attributes;
     }
     @Override
     public String getName() {
@@ -66,8 +69,10 @@ public class PrincipalDetails implements UserDetails, OAuth2User {
         } else if (StringUtils.equals(role,"ROLE_OFFER")) {
             return jobOfferDto.getCompanyName();
         }
-        return null;
+//        return null;
+        return userDto.getUserid();
     }
+
 
     @Override
     public boolean isAccountNonExpired() {
@@ -89,5 +94,9 @@ public class PrincipalDetails implements UserDetails, OAuth2User {
         return true;
     }
 
+
+    //추가
+    public PrincipalDetails(UserDto userDto, Object o, Object o1, String tokenValue, Map<String, Object> attributes) {
+    }
 
 }

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--  link   -->
+    <th:block th:insert="~{fragments/link :: linkFragment}" />
+
+    <link rel="stylesheet" href="/css/recruit/req.css">
+
+    <script src="/js/recruit/req.js" defer></script>
+
+
+    <script th:inline="javascript">
+        const recruit_id = [[${recruit.id}]];
+        console.log("recruit_id",recruit_id);
+
+    </script>
+
+</head>
+<body>
+
+<div class="wrapper">
+    <header>
+        <!-- header   -->
+        <th:block th:insert="~{fragments/top_header :: topHeaderFragment}" />
+        <!-- nav       -->
+        <th:block th:insert="~{fragments/nav :: navFragment}" />
+
+    </header>
+    <section class="layout-150">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">홈</a></li>
+                <li class="breadcrumb-item active" aria-current="page">TEMPLATE</li>
+            </ol>
+        </nav>
+    </section>
+
+    <main class="layout-150">
+        <section>
+            <div class="header">
+                <div class="top-header">
+                    <span  th:text="${recruit.jobOffer.companyName}"></span>
+                    <span style="border : 1px solid;">관심기업</span>
+                    <span style="border : 1px solid;">채용중</span>
+                </div>
+                <div class="title">
+                    <div>
+                        <h3 th:text="${recruit.title}"></h3>
+                    </div>
+                    <div class="apply-btn">
+                        <a href="javascript:void(0)" class="btn btn-danger recruit_btn" style="border-radius:0" >입사지원</a>
+                    </div>
+                </div>
+                <div>
+                    <hr>
+                    <table class="table w-100" style=".8rem;">
+                        <tbody>
+                            <tr>
+                                <td class="bg-dark text-light" style="width:150px;">경력</td>
+                                <td th:text="${recruit.career}"></td>
+                                <td class="bg-dark text-light" style="width:150px;">급여</td>
+                                <td th:text="${recruit.salary}"></td>
+                            </tr>
+                            <tr>
+                                <td  class="bg-dark text-light" style="width:150px;">학력</td>
+                                <td th:text="${recruit.ability}"></td>
+                                <td  class="bg-dark text-light" style="width:150px;">근무요일</td>
+                                <td> 월-금(0900:18:00)</td>
+                            </tr>
+                            <tr>
+                                <td  class="bg-dark text-light" style="width:150px;">근무형태</td>
+                                <td th:text="${recruit.jobwork}"></td>
+                                <td  class="bg-dark text-light" style="width:150px;">근무지역</td>
+                                <td th:text="${recruit.jobzone}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <hr>
+                </div>
+                <div clas="image-block">
+                    <div class="info">
+                        <div style="font-size:.8rem;">최저임금계산에 대한 알림하단에 명시된 급여,근무 내용등이 최저임금에 미달하는 경우 위 내용이 우선합니다.</div>
+                        <div style="font-size:.8rem;margin-bottom : 15px;">
+                            <span>조회수</span><span>555</span>&nbsp;<span>공유하기</span>&nbsp;<span>신고하기</span>
+                        </div>
+                        <div>
+                            <img src="/assets/sample/05_edu_img_240620_01.png" alt="">
+                            <img src="/assets/sample/05_edu_img_240620_02.png" alt="">
+                            <img src="/assets/sample/05_edu_img_240620_03.png" alt="">
+                            <img src="/assets/sample/05_edu_img_240620_04.png" alt="">
+                            <img src="/assets/sample/05_edu_img_240620_05.png" alt="">
+                            <img src="/assets/sample/05_edu_img_240620_06.png" alt="">
+                            <img src="/assets/sample/05_edu_img_240620_07.png" alt="">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- footer       -->
+    <th:block th:insert="~{fragments/footer :: footerFragment}" />
+
+
+    <!-- 입사지원 모달 -->
+    <button  class="moal_btn" style="display:none; "data-bs-toggle="modal" data-bs-target="#applyModal">버튼</button>
+    <div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-lg modal-dialog-centered">
+            <div class="modal-content" style="font-size:.8rem;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">이력서 선택하기</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="resuit">
+                        <table class="table w-100" style="font-size:.8rem;">
+                            <tbody>
+                      <!--          <tr>
+                                    <td class="bg-dark text-light" style="width:100px;">제목</td>
+                                    <td>제목제목</td>
+                                    <td  class="bg-dark text-light" style="width:100px;">작성일</td>
+                                    <td  style="width:150px;">2022-01-01 11:11:11</td>
+                                    <td class="bg-dark text-light" style="width:50px;">선택</td>
+                                    <td style="width:50px;">
+                                        <input id="chk" type="checkbox" class="form-check" />
+                                        <label for="chk"></label>
+                                    </td>
+                                </tr>-->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a type="button" class="btn btn-primary  apply_modal_btn" style="font-size:.8rem" >지원하기</a>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="font-size:.8rem">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>

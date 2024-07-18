@@ -10,12 +10,12 @@
 }
 
 .main-block{
-	height : 700px;
-	width : 400px;	
-	border : 1px solid gray;
-	border-radius : 5px;
+
+	width : 400px;
 	margin : 0 auto;
 	overflow : auto;
+	box-shadow : 5px 5px 5px lightgray;
+
 }
 .main-block>.right{
 

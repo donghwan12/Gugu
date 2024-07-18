@@ -1,0 +1,217 @@
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 0;
+
+        }
+        .wrapper {
+
+            margin: 0 auto;
+
+        }
+        header, main, footer {
+            margin-bottom: 20px;
+        }
+        .add {
+            width: 100%;
+            max-width: 700px;
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            margin: 0 auto;
+            background-color: #fff;
+            font-size: 16px;
+        }
+        h1 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #333;
+            font-size: 32px;
+        }
+        .for {
+            display: flex;
+            flex-direction: column;
+        }
+        .for > label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .for > input,
+        .for > select,
+        .for > textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+        .for > input:focus,
+        .for > select:focus,
+        .for > textarea:focus {
+            border-color: #00a8ff;
+            outline: none;
+        }
+        .for > input[type="file"] {
+            padding: 3px;
+        }
+        .career-field {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .career-field > input {
+            flex: 1;
+            margin-right: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .career-field > button {
+            flex-shrink: 0;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #00a8ff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .career-field > button:hover {
+            background-color: #0091e1;
+        }
+        .salary-options {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .salary-options > label {
+            margin-right: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .salary-options > label > input {
+            margin-right: 5px;
+        }
+        .address-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .address-container > input {
+            flex: 1;
+            margin-right: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .address-container > button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #00a8ff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .address-container > button:hover {
+            background-color: #0091e1;
+        }
+        .address-detail {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+        #layer {
+            display: none;
+            position: fixed;
+            overflow: hidden;
+            z-index: 1;
+            -webkit-overflow-scrolling: touch;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        #layer .bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        #layer .address-container {
+            position: relative;
+            width: 300px;
+            height: 400px;
+            margin: 0 auto;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        button.submit-button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: #00a8ff;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        button.submit-button:hover {
+            background-color: #0091e1;
+        }
+
+        td{
+            position:relative;
+            text-align:center;
+
+        }
+        tr{
+            margin-bottom : 10px;
+        }
+        input{
+            font-size :.8rem;
+        }
+
+        a{
+            position:relative;
+            display:block;
+            font-size : .8rem;
+            border-radius:0px;
+            top :-2px;
+        }
+
+    input[type='text']{
+        border-radius:0px;
+    }
+    input[type='file']{
+        border-radius:0px;
+    }
+    input[type='datetime-local']{
+        border-radius:0px;
+    }
+
+::-webkit-input-placeholder{
+    font-size : .8rem;
+}
+

@@ -45,8 +45,9 @@ public class PrincipalDetailsService implements UserDetailsService {
         userDto.setUserid(user.getUserid());
         userDto.setPassword(user.getPassword());
         userDto.setRole(user.getRole());
-
         principalDetails.setUserDto(userDto);
+
+
         if(StringUtils.equals(userOptional.get().getRole(),"ROLE_SEEKER")){
             JobSeeker jobSeeker =  jobSeekerRepository.findByUser(user);
             JobSeekerDto jobSeekerDto = new JobSeekerDto();
@@ -56,20 +57,26 @@ public class PrincipalDetailsService implements UserDetailsService {
             jobSeekerDto.setZipcode(jobSeeker.getZipcode());
             jobSeekerDto.setAddr1(jobSeeker.getAddr1());
             jobSeekerDto.setAddr2(jobSeeker.getAddr2());
+            jobSeekerDto.setEmail(jobSeeker.getEmail());
             principalDetails.setJobSeekerDto(jobSeekerDto);
 
         }else if(StringUtils.equals(userOptional.get().getRole(),"ROLE_OFFER")){
             JobOffer jobOffer =  jobOfferRepository.findByUser(user);
+
             JobOfferDto jobOfferDto = new JobOfferDto();
             jobOfferDto.setCompanyName(jobOffer.getCompanyName());
             jobOfferDto.setId(jobOffer.getId());
             jobOfferDto.setZipcode(jobOffer.getZipcode());
-            jobOfferDto.setCompanyAddr1(jobOfferDto.getCompanyAddr1());
-            jobOfferDto.setCompanyAddr2(jobOfferDto.getCompanyAddr2());
-            jobOfferDto.setCompanyEmail(jobOfferDto.getCompanyEmail());
-            jobOfferDto.setCompanyIndustry(jobOfferDto.getCompanyIndustry());
-            jobOfferDto.setCompanyNumber(jobOfferDto.getCompanyNumber());
+            jobOfferDto.setCompanyAddr1(jobOffer.getCompanyAddr1());
+            jobOfferDto.setCompanyAddr2(jobOffer.getCompanyAddr2());
+            jobOfferDto.setCompanyEmail(jobOffer.getCompanyEmail());
+            jobOfferDto.setCompanyIndustry(jobOffer.getCompanyIndustry());
+            jobOfferDto.setCompanyNumber(jobOffer.getCompanyNumber());
+            jobOfferDto.setCompanyPhone(jobOffer.getCompanyPhone());
+            jobOfferDto.setCompanyexplanation(jobOffer.getCompanyexplanation());
+            jobOfferDto.setCompanyName(jobOffer.getCompanyName());
             principalDetails.setJobOfferDto(jobOfferDto);
+
         }
 
         System.out.println("PrincipalDetailsService loadUserByUsername principalDetails : " + principalDetails);

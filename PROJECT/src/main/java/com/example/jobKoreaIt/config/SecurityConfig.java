@@ -1,6 +1,7 @@
 package com.example.jobKoreaIt.config;
 
 
+import com.example.jobKoreaIt.config.auth.PrincipalDetailsOAuth2Service;
 import com.example.jobKoreaIt.config.auth.exceptionHandler.CustomAccessDeniedHandler;
 import com.example.jobKoreaIt.config.auth.exceptionHandler.CustomAuthenticationEntryPoint;
 import com.example.jobKoreaIt.config.auth.jwt.JwtAuthorizationFilter;
@@ -44,6 +45,10 @@ public class SecurityConfig  {
     @Autowired
     private JobSeekerRepository jobSeekerRepository;
 
+    //추가
+    @Autowired
+    private PrincipalDetailsOAuth2Service principalDetailsOAuth2Service;
+
     @Bean
     public SecurityFilterChain config(HttpSecurity http) throws Exception {
 
@@ -51,25 +56,18 @@ public class SecurityConfig  {
         http.csrf(
                 (config)->{ config.disable(); }
         );
-
-
         //요청 URL별 접근 제한
         http.authorizeHttpRequests(
                 authorize->{
                     authorize.requestMatchers("/js/**","/css/**","/images/**","/templates","/assets/**").permitAll();
                     authorize.requestMatchers("/","/login","/user/join","/seeker/join","/offer/join").permitAll();
-                   
-
-
+                    authorize.requestMatchers("/upload/**").hasAnyRole("SEEKER","OFFER");
                     //SEEKER/OFFER
 //                    authorize.requestMatchers("/seeker/**").hasAnyRole("SEEKER"); //임시 모든 URL 허용
 //                    authorize.requestMatchers("/offer/**").hasAnyRole("OFFER"); //임시 모든 URL 허용
-
                     authorize.requestMatchers("/**").permitAll();
-
                     //COMMUNITY
                     authorize.requestMatchers("/community/**").permitAll(); //임시 모든 URL 허용
-
                     authorize.anyRequest().authenticated();
                 }
         );
@@ -94,6 +92,8 @@ public class SecurityConfig  {
                     logout.invalidateHttpSession(true);
                 }
         );
+
+
         //예외처리
         http.exceptionHandling(
                 ex->{
@@ -133,6 +133,13 @@ public class SecurityConfig  {
 //                }
 //        );
 
+        // 추가
+        http.oauth2Login(oauth2 -> {
+            oauth2.loginPage("/user/login");
+            oauth2.userInfoEndpoint().userService(principalDetailsOAuth2Service);
+            oauth2.successHandler(customLoginSuccessHandler());
+            oauth2.failureHandler(new CustomAuthenticationFailureHandler());
+        });
 
         return http.build();
 
